@@ -1,0 +1,33 @@
+#ifndef OCEANE_SERVER_ICORBA_IDL
+#define OCEANE_SERVER_ICORBA_IDL
+
+#include "CorbaUtil/ModelICorba.idl"
+
+
+module Oceane
+{
+	interface OceaneServerICorba
+	{
+		/**
+		 * @return		Le nom du serveur.
+		 */
+		string getOceaneServerName ( ) raises (OceaneExceptionICorba);
+
+		unsigned long getId ( ) raises (OceaneExceptionICorba);
+
+		/**
+		 * Charge le modèle dont le fichier d'association modélisation/maillage
+		 * est donné en argument.
+		 * @return		Un proxy sur le modèle chargé
+		 */
+		ModelICorba loadModel (in string fileName) raises (OceaneExceptionICorba);
+
+		/**
+		 * Ferme le modèle transmis en argument.
+		 */
+		void closeModel (in ModelICorba m) raises (OceaneExceptionICorba);
+	};	// interface OceaneServerICorba
+
+};	// module Oceane
+
+#endif	// OCEANE_SERVER_ICORBA_IDL

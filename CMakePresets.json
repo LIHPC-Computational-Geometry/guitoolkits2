@@ -1,0 +1,29 @@
+{
+    "version": 3,
+    "configurePresets": [
+      {
+        "name": "ci",
+        "cacheVariables":
+        {
+          "USE_PYTHON_3": "ON",
+          "TkUtil_ROOT": "$env{INSTALL_DIR}/tkutil",
+          "TkUtilScripting_ROOT": "$env{INSTALL_DIR}/tkutil",
+          "PythonUtil_ROOT": "$env{INSTALL_DIR}/pythonutil",
+          "Lima_ROOT": "$env{INSTALL_DIR}/lima",
+          "qualifinternal_ROOT": "$env{INSTALL_DIR}/qualif",
+          "QwtCharts_ROOT": "$env{INSTALL_DIR}/qwtcharts",
+          "QtUtil_ROOT": "$env{INSTALL_DIR}/qtutil",
+          "VtkContrib_ROOT": "$env{INSTALL_DIR}/vtkcontrib",
+          "BUILD_GQGMDS": "ON",
+          "Lima_ROOT": "$env{INSTALL_DIR}/lima",
+          "qualifinternal_ROOT": "$env{INSTALL_DIR}/qualif",
+          "gmds_ROOT": "$env{INSTALL_DIR}/gmds072",
+          "qwt_ROOT": "/containerws/src/qwt-6.1.5",
+          "USE_PYTHON_3": "ON",
+          "VTK_7": "ON",
+          "USE_OPENGL_BACKEND": "ON",
+          "VTK_ROOT": "$env{INSTALL_DIR}/VTK-7.1.1"
+        }
+      }
+    ]
+}

@@ -1,0 +1,28 @@
+#ifndef APPLICATION_EXCEPTION_IDL
+#define APPLICATION_EXCEPTION_IDL
+
+
+module CorbaFacilities
+{
+
+	/**
+	 * Exception utilisée par des services distribués sur le réseau.
+	 * Elle reprend les caractéristiques des exceptions du module <I>util</I> :
+	 * <UL>
+	 * <LI>Un message contenant la nature de l'exception (attribut <I>what</I>),
+	 * <LI>Un message complet contenant la nature de l'exception et
+	 * d'éventuelles informations complémentaires.
+	 * </UL>
+	 */
+	exception ApplicationException
+	{
+		/** La raison d'être de l'exception. */
+		string		what;
+
+		/** Le message complet. */
+		string		fullMessage;
+	};	// exception ApplicationException
+
+};	// module CorbaFacilities
+
+#endif	// APPLICATION_EXCEPTION_IDL

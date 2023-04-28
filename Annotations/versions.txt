@@ -1,0 +1,5 @@
+Version 3.0.0 : 10/01/23
+===============
+
+Intégration au projet GUIToolkits.
+

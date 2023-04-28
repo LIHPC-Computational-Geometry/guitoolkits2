@@ -1,0 +1,22 @@
+include(CMakeFindDependencyMacro)
+find_dependency (TkUtil)
+find_dependency (Qt5Widgets)
+find_dependency (Qt5PrintSupport)
+set (QtWebEngine_FOUND "@QtWebEngine_ENABLED@")
+if (QtWebEngine_FOUND)
+	find_dependency (Qt5WebView)
+	find_dependency (Qt5WebEngineWidgets)
+endif (QtWebEngine_FOUND)
+set (QtWebKit_FOUND "@QtWebKit_ENABLED@")
+if (QtWebKit_FOUND)
+	find_dependency (Qt5WebKitWidgets)
+endif (QtWebKit_FOUND)
+
+@PACKAGE_INIT@
+set (QtUtil_VERSION @QT_UTIL_VERSION@)
+set_and_check (QtUtil_INCLUDE_DIR   "@PACKAGE_INCLUDE_INSTALL_DIR@")
+set_and_check (QtUtil_LIB_DIR   "@PACKAGE_LIB_INSTALL_DIR@")
+check_required_components (QtUtil)
+
+# Fournir l'accès aux services des cibles (fichier non inclus automatiquement) :
+include(${CMAKE_CURRENT_LIST_DIR}/QtUtilTargets.cmake)

@@ -1,0 +1,12 @@
+Version 6.1.0 : 31/03/23
+===============
+
+Portage omniORB 4.3.0 / Python 3.
+Compatibilité entre les versions 4.1.7 et 4.3.0 d'omniORB.
+
+
+Version 6.0.0 : 10/01/23
+===============
+
+Intégration au projet GUIToolkits.
+

@@ -1,0 +1,39 @@
+Version 6.4.0 : 25/04/23
+===============
+
+Méthode ScriptingLog::addMethodArgument (ScriptingLog::ARG_TYPE, std::string).
+Correctifs cmake quant à la version de python utilisée.
+
+
+Version 6.3.0 : 31/03/23
+===============
+
+Portage GitHub environnement podman/spack/tests CI.
+
+
+Version 6.2.0 : 10/03/23
+===============
+
+Méthode Process::create (const string& cmdLine).
+
+Correctif initialisation de la classe ThreadIfc : le thread est d'emblée considéré comme lancé. Corrige le bogue où join
+est appelé avant que le scheduler n'aie effectivement lancé le thread, et que celui-ci soit lancé après sa destruction ...
+
+
+Version 6.1.0 : 10/02/23
+===============
+
+Méthode LocalNetwork::setHomeCommand.
+
+
+Version 6.0.1 : 03/02/23
+===============
+
+Retouches cmake : blindage pour cas non gérés (versions Python).
+
+
+Version 6.0.0 : 10/01/23
+===============
+
+Intégration au projet GUIToolkits.
+

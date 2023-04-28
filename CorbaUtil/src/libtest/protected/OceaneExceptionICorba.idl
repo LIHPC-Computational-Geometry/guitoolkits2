@@ -1,0 +1,15 @@
+#ifndef OCEANE_EXCEPTION_ICORBA_IDL
+#define OCEANE_EXCEPTION_ICORBA_IDL
+
+
+module Oceane
+{
+
+exception OceaneExceptionICorba
+{
+	string		what;
+};	// exception OceaneExceptionICorba
+
+};	// module Oceane
+
+#endif	// OCEANE_EXCEPTION_ICORBA_IDL

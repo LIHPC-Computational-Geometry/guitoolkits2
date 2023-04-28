@@ -1,0 +1,48 @@
+Quelques notes à propos des tests de ssh tunneling :
+L'objectif est d'avoir une IOR du serveur Océane exploitable côté client et
+côté serveur.
+En effet, à partir d'une IOR, lors d'un stringToObject, le client évalue
+les profiles de la IOR pour voir s'ils sont utilisables. S'ils ne le
+sont pas l'exception TRANSIENT_NoUsableProfile est levée.
+Or, en cas de socket unix, le nom du profile est évalué en le comparant
+à gethostname ( ) et l'évaluation est négative s'ils diffèrent ...
+En cas de sockets Unix, des fichiers, donc locaux à la machine, le nom de la
+machine figure à 2 reprises dans la IOR : nom du profile + associé à
+la publication socket unix.
+ex : 
+x-narince% bin/catior -o IOR:010000002200000049444c3a4f6365616e652f4f6365616e6553657276657249436f7262613a312e3000000001000000000000008b000000010102000800000074686f6d31353300000000000e000000fe9af16d580000b7fe000000000000000300000000000000080000000100000000545441010000001c000000010000000100010001000000010001050901010001000000090101000254544123000000010000000800000074686f6d313533000f0000002f746d702f63752e736f636b657400
+Type ID: "IDL:Oceane/OceaneServerICorba:1.0"
+Profiles:
+1. IIOP 1.2 machine153 0 POA(root) "...."
+            TAG_ORB_TYPE omniORB
+            TAG_CODE_SETS char native code set: ISO-8859-1
+                          char conversion code set: UTF-8
+                          wchar native code set: UTF-16
+                          wchar conversion code set: UTF-16
+            
+            TAG_OMNIORB_UNIX_TRANS machine153 /tmp/cu.socket
+Pour un serveur lancé sur machine153.
+Si on soummet cette IOR à convertior pour changer de machine (ex : migration)
+le nom du profile (utilisé par le client) est bien changé, mais on a toujours
+	TAG_OMNIORB_UNIX_TRANS machine153 /tmp/cu.socket
+Cette IOR ne fonctionne pas côté client bien que le socket unix soit là
+(ssh tunneling).
+
+La version actuelle (3.1.0) repose sur des intercepteurs activés optionnellement
+côté serveur :
+- Encodage : toute IOR générée utilise le nom de la machine cliente => le client
+adressera localement les objets du serveur (donc sur une machine connue), et
+la requête sera transmise au serveur via tunneling ssh,
+- Decodage : toute IOR entrante côté serveur utilisera le nom de machine du serveur
+afin que celui-ci accepte de la traiter.
+
+- Lancement du client :
+ma_machine% /path/runner_client-gcc.4.4.6-debug -srvPath /path/simple_server-icpc.15.0.2-debug -host machine-nl-gw -unixSocket /tmp/socket.test.12345 -sshPath /path/bin/ssh -sshOpt -v -sshOpt -L -sshOpt "/tmp/socket.test.12345:/tmp/socket.test.12345"
+=> On force l'usage de socket unix de part et d'autre (même nom car figure dans la IOR).
+=> Le client lancera le serveur avec les options :
+	- -ORBendPoint giop:unix:/tmp/cu.socket : publication sous forme de
+	socket unix
+	- -unixSocket /tmp/cu.socket : supprimer ce socket si pré-existant
+Premier test positif (mais simple).
+Le -ORBclientTransportRule "* unix" transmis au client n'est pas utile.
+

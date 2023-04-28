@@ -1,0 +1,13 @@
+A FAIRE :
+Affichage optionnel des symboles => option dans les panneaux.
+
+Version 5.1.0 : 31/03/23
+===============
+
+Portage GitHub environnement podman/spack/tests CI.
+
+
+Version 5.0.0 : 10/01/23
+===============
+
+Intégration au projet GUIToolkits.

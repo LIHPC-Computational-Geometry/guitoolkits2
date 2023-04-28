@@ -1,0 +1,105 @@
+#ifndef REMOTE_REFERENCED_OBJECT_IDL
+#define REMOTE_REFERENCED_OBJECT_IDL
+
+
+module CorbaFacilities
+{
+	interface RemoteReferencedObject;
+
+
+	/**
+	 * <P>L'objet de base d'un système observables/observateurs Corba.
+	 * </P>
+	 * @warning		L'appel de <I>remoteObservableModified</I> risque d'être
+	 *				effectué dans un thread autre que le thread principal.
+	 *				Il convient de faire très attention aux bibliothèques
+	 *				utilisées par ces fonctions callbacks, certaines n'étant
+	 *				pas multithread (ex : Xlib).
+	 */
+	interface RemoteObjectBase
+	{
+		/**
+		 * @return		Un identifiant unique sur le réseau.
+		 */
+		string getUniqueId ( );
+
+		/**
+		 * Appellé lorsque l'objet observé est modifié.
+		 * @param		Object modifié
+		 * @param		Nature de la modification
+		 */
+		void remoteObservableModified (
+				in RemoteReferencedObject observable, in unsigned long kind);
+
+		/**
+		 * Appellé lorsque l'objet appelé est en cours de destruction.
+		 * @param		Object en cours de destruction
+		 */
+		void remoteObservableDeleted (in RemoteReferencedObject observable);
+
+		/**
+		 * S'enregistre auprès de l'objet transmis en argument pour être averti
+		 * de toute modification le concernant.
+		 * @param		Objet à observer
+		 * @see			unregisterRemoteObservable
+		 * @see			remoteObservableModified
+		 * @see			remoteObservableDeleted
+		 */
+		void registerRemoteObservable (
+								inout RemoteReferencedObject observable);
+
+		/**
+		 * Se désenregistre auprès de l'objet transmis en argument.
+		 * de toute modification le concernant.
+		 * @param		Objet à ne plus observer
+		 * @see			registerRemoteObservable
+		 * @see			remoteObservableModified
+		 * @see			remoteObservableDeleted
+		 */
+		void unregisterRemoteObservable (
+								inout RemoteReferencedObject observable);
+	};	// interface RemoteObjectBase
+
+	
+	/**
+	 * L'observable de base. Avertit ses observateurs de toute modification
+	 * le concernant.
+	 */
+	interface RemoteReferencedObject : RemoteObjectBase
+	{
+		/**
+		 * Recense l'objet transmis en argument pour l'informer de toute
+		 * modification le concernant.
+		 * @param		Observateur à recenser
+		 * @see			removeRemoteObserver
+		 */
+		void addRemoteObserver (inout RemoteObjectBase observable);
+
+		/**
+		 * Désenregistre une référence sur l'objet transmis en argument.
+		 * @param		Observateur à déréférencer
+		 * @see			addRemoteObserver
+		 */
+		void removeRemoteObserver (inout RemoteObjectBase observable);
+	};	// interface RemoteReferencedObject
+
+
+	/**
+	 * Classe d'observable dotée d'un nom.
+	 */
+	interface RemoteReferencedNamedObject : RemoteReferencedObject
+	{
+		/**
+		 * @return		Le nom de l'instance
+		 */
+		string getRemoteName ( );
+
+		/**
+		 * @param		Le nouveau nom de l'instance
+		 */
+		void setRemoteName (in string name);
+	};	// interface RemoteReferencedNamedObject
+};	// module CorbaFacilities
+
+
+#endif	// REMOTE_REFERENCED_OBJECT_IDL

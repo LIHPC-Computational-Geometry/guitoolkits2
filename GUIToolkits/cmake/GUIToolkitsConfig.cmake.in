@@ -1,0 +1,6 @@
+include(CMakeFindDependencyMacro)
+
+@PACKAGE_INIT@
+
+set (GUI_TOOLKITS_VERSION @GUI_TOOLKITS_VERSION@)
+set_and_check (GUIToolkits_CMAKE_DIR   "@PACKAGE_CMAKE_INSTALL_DIR@")

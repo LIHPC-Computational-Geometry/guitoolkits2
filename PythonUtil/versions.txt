@@ -1,0 +1,23 @@
+Version 6.1.1 : 25/04/23
+===============
+
+Correctifs cmake quant à la version de python utilisée.
+
+
+Version 6.1.0 : 31/03/23
+===============
+
+Portage GitHub environnement podman/spack/tests CI.
+
+
+Version 6.0.1 : 03/02/23
+===============
+
+Retouches cmake : blindage pour cas non gérés (versions Python).
+
+
+Version 6.0.0 : 10/01/23
+===============
+
+Intégration au projet GUIToolkits.
+

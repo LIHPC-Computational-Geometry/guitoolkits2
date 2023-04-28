@@ -1,0 +1,24 @@
+Version 4.1.0 : 31/03/23
+===============
+
+Portage GitHub environnement podman/spack/tests CI.
+
+
+Version 4.0.2 : 15/02/23
+===============
+
+Retouches cmake : détection de la version utilisée de VTK, teste sur la dépendance à Lima.
+Qualif v 2.3.5
+
+
+Version 4.0.1 : 03/02/23
+===============
+
+Retouches cmake : suppression appel à FindHdf145.cmake.
+
+
+Version 4.0.0 : 10/01/23
+===============
+
+Intégration au projet GUIToolkits.
+

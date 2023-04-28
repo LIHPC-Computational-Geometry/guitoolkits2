@@ -1,0 +1,50 @@
+#ifndef MODELICORBA_IDL
+#define MODELICORBA_IDL
+
+#include "CorbaUtil/OceaneExceptionICorba.idl"
+
+
+module Oceane
+{
+
+	struct Node
+	{
+		double		x, y, z;
+	};	// struct Node
+
+	typedef sequence<Node>		NodeList;
+
+
+	interface ModelICorba
+	{
+		typedef sequence<double>	Distances;
+
+		typedef sequence<string>	SurfaceList;
+
+		/**
+		 * Structure décrivant à quelles surfaces appartiennent les noeuds.
+		 * Fonctionne à l'aide d'opérations logiques & et | sur les bits.
+		 */
+		struct NodeSurfaces
+		{
+			unsigned long long		s_64, s_65_128;
+		};	// struct NodeSurfaces
+
+		typedef sequence<NodeSurfaces>		NodeSurfacesList;
+
+		/**
+		 * Projette les noeuds sur la surface.
+		 * @param		Surfaces de projection
+		 * @param		Surfaces auxquelles appartiennent chaque noeud
+		 * @param		Noeuds projetés
+		 * @param		Distances des noeuds à la surface
+		 */
+		void projectNodes (
+			in SurfaceList surfaces, in NodeSurfacesList nodeSurfaces, 
+			inout NodeList nodes, inout Distances dists)
+				raises (OceaneExceptionICorba);
+	};	// interface ModelICorba
+
+};	// module Oceane
+
+#endif	// MODELICORBA_IDL

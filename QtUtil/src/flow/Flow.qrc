@@ -1,0 +1,14 @@
+<!DOCTYPE RCC><RCC version="1.0">
+ <qresource>
+     <file>images/redo.png</file>
+     <file>images/undo.png</file>
+     <file>images/dash_dot_dot_line.png</file>
+     <file>images/dash_dot_line.png</file>
+     <file>images/dash_line.png</file>
+     <file>images/dot_line.png</file>
+     <file>images/palette.png</file>
+     <file>images/print.png</file>
+     <file>images/zoomin.png</file>
+     <file>images/zoomout.png</file>
+ </qresource>
+ </RCC>

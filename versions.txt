@@ -1,0 +1,180 @@
+Version 1.6.0 : 25/04/23
+===============
+
+Versions des dépendances :
+GUIToolkitsVariables: 1.2.0
+Annotations			: 3.0.0
+CorbaUtil			: 6.1.0
+Plugin				: 6.0.0
+Preferences			: 6.1.0
+PythonUtil			: 6.1.1	Correctifs cmake quant à la version de python utilisée.
+QQualif				: 4.1.0
+QtNetWork			: 6.0.0
+QtUtil				: 6.1.0
+QtPython			: 6.1.0
+QtVtk				: 8.3.0
+QwtCharts			: 5.1.0
+TkUtil				: 6.4.0	ScriptingLog::addMethodArgument (ScriptingLog::ARG_TYPE type, const string& value)
+VtkContrib			: 5.3.1	Retouches cmake (dépendance OpenGL) pour Spack 0.18.1, retouches cmake (support parallélisme / dépendance MPI).
+
+
+Version 1.5.0 : 07/04/23
+===============
+
+Correctif CMakeLists.txt racine pour la bonne propagation des variables cmake contenant des ";" (ex : CMAKE_PREFIX_PATH).
+
+Versions des dépendances :
+GUIToolkitsVariables: 1.2.0
+Annotations			: 3.0.0
+CorbaUtil			: 6.1.0	Portage omniORB 4.3.0 / Python 3
+Plugin				: 6.0.0
+Preferences			: 6.1.0
+PythonUtil			: 6.1.0
+QQualif				: 4.1.0
+QtNetWork			: 6.0.0
+QtUtil				: 6.1.0
+QtPython			: 6.1.0
+QtVtk				: 8.3.0
+QwtCharts			: 5.1.0
+TkUtil				: 6.3.0
+VtkContrib			: 5.3.0
+
+
+Version 1.4.0 : 31/03/23
+===============
+
+Portage GitHub environnement podman/spack/tests CI. ======== > Non testé < ========
+
+Ajout de quelques recettes spack.
+
+Divers nettoyage.
+
+Versions des dépendances :
+GUIToolkitsVariables: 1.2.0 (common_vtk.cmake : Propagation de USE_OPENGL_BACKEND et QVTK_WIDGET)
+Annotations			: 3.0.0
+CorbaUtil			: 6.0.0
+Plugin				: 6.0.0
+Preferences			: 6.1.0 Tests CI
+PythonUtil			: 6.1.0 Tests CI
+QQualif				: 4.1.0 Tests CI
+QtNetWork			: 6.0.0
+QtUtil				: 6.1.0 Tests CI
+QtPython			: 6.1.0 Tests CI
+QtVtk				: 8.3.0 Tests CI
+QwtCharts			: 5.1.0 Tests CI
+TkUtil				: 6.3.0 Tests CI
+VtkContrib			: 5.3.0 Correctif propagation de USE_OPENGL_BACKEND et QVTK_WIDGET
+
+
+Version 1.3.0 : 10/03/23 
+===============
+
+Versions des dépendances :
+GUIToolkitsVariables: 1.1.1
+Annotations			: 3.0.0
+CorbaUtil			: 6.0.0
+Plugin				: 6.0.0
+Preferences			: 6.0.0
+PythonUtil			: 6.0.1
+QQualif				: 4.0.2 
+QtNetWork			: 6.0.0
+QtUtil				: 6.0.0
+QtPython			: 6.0.1
+QtVtk				: 8.2.0 
+QwtCharts			: 5.0.0
+TkUtil				: 6.2.0 (Process::create (const string& cmdLine), correctif initialisation ThreadIfc)
+VtkContrib			: 5.2.0
+
+
+Version 1.2.0 : 15/02/23 
+===============
+
+CMakeLists.txt modifié pour fonctionner en mode script de cmake afin de remplacer le build.sh.
+
+Versions des dépendances :
+GUIToolkitsVariables: 1.1.1
+Annotations			: 3.0.0
+CorbaUtil			: 6.0.0
+Plugin				: 6.0.0
+Preferences			: 6.0.0
+PythonUtil			: 6.0.1
+QQualif				: 4.0.2 (retouches cmake : détection de la version utilisée de VTK, teste sur la dépendance à Lima, Qualif v 2.3.5)
+QtNetWork			: 6.0.0
+QtUtil				: 6.0.0
+QtPython			: 6.0.1
+QtVtk				: 8.2.0 (Déplacement de l'inclusion qtvtk_common.cmake du CMakeLists.txt racine vers le CMakeLists.txt de la composante QtVtk)
+QwtCharts			: 5.0.0
+TkUtil				: 6.1.0 (LocalNetwork::homeCommand)
+VtkContrib			: 5.2.0 (détection version VTK, propagation VTK_7, VTK_8, VTK_9)
+
+
+Version 1.1.1 : 07/02/23
+===============
+
+Retouches cmake : 
+- QQualif												: suppression appel à FindHdf145.cmake
+- VtkContrib, QtVtk										: blindage versions/options VTK
+- GUIToolkitsVariables, TkUtil, PythonUtil, QtPython	: blindage versions Python
+
+Création de GUIToolkits/cmake/GUIToolkitsConfig.cmake.in pour déploiement du numéro de version. Adaptation de build.sh et du CMakeLists.txt racine.
+
+Versions des dépendances :
+GUIToolkitsVariables: 1.1.1
+Annotations			: 3.0.0
+CorbaUtil			: 6.0.0
+Plugin				: 6.0.0
+Preferences			: 6.0.0
+PythonUtil			: 6.0.1
+QQualif				: 4.0.1
+QtNetWork			: 6.0.0
+QtUtil				: 6.0.0
+QtPython			: 6.0.1
+QtVtk				: 8.1.1	Portage VTK 9.2.5 (QtVtkGraphicWidget)
+QwtCharts			: 5.0.0
+TkUtil				: 6.0.1
+VtkContrib			: 5.1.1
+
+
+Version 1.1.0 : 17/01/23
+===============
+
+GUIToolkitsVariables 1.0.0, VtkContrib v 5.1.0, QtVtk v 8.1.0 : retouches cmake.
+
+Versions des dépendances :
+GUIToolkitsVariables: 1.1.0
+Annotations			: 3.0.0
+CorbaUtil			: 6.0.0
+Plugin				: 6.0.0
+Preferences			: 6.0.0
+PythonUtil			: 6.0.0
+QQualif				: 4.0.0
+QtNetWork			: 6.0.0
+QtUtil				: 6.0.0
+QtPython			: 6.0.0
+QtVtk				: 8.1.0
+QwtCharts			: 5.0.0
+TkUtil				: 6.0.0
+VtkContrib			: 5.1.0
+
+
+Version 1.0.0 : 12/01/23
+===============
+
+Création du projet. Regroupement des petites bibliothèques en vue de simplifier leur installation et de factoriser
+des paramètres (compilation, installation).
+
+Versions des dépendances :
+GUIToolkitsVariables: 1.0.0
+Annotations			: 3.0.0
+CorbaUtil			: 6.0.0
+Plugin				: 6.0.0
+Preferences			: 6.0.0
+PythonUtil			: 6.0.0
+QQualif				: 4.0.0
+QtNetWork			: 6.0.0
+QtUtil				: 6.0.0
+QtPython			: 6.0.0
+QtVtk				: 8.0.0
+QwtCharts			: 5.0.0
+TkUtil				: 6.0.0
+VtkContrib			: 5.0.0

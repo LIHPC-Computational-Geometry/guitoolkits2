@@ -1,0 +1,11 @@
+Version 6.1.0 : 31/03/23
+===============
+
+Portage GitHub environnement podman/spack/tests CI.
+
+
+Version 6.0.0 : 10/01/23
+===============
+
+Intégration au projet GUIToolkits.
+

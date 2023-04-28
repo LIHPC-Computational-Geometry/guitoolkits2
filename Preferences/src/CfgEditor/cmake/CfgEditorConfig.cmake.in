@@ -1,0 +1,5 @@
+@PACKAGE_INIT@
+set (Preferences_VERSION @PREFERENCES_VERSION@)
+set_and_check (CfgEdit_RUNTIME_DIR   "@PACKAGE_RUNTIME_INSTALL_DIR@")
+check_required_components (PrefsQt)
+

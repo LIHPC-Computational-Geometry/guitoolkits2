@@ -1,0 +1,38 @@
+Options utiles pour omniORB :
+=============================
+
+Transmises à la ligne de commande, et propagées lors de l'initialisation de
+l'ORB, les options suivantes peuvent être fort utiles.
+Elles peuvent également être renseignées via des variables d'environnement. Ex :
+export ORBtraceLevel=10
+
+- -ORBtraceLevel nombre : niveau de traces utilisé. Dans la doc :
+	level 0 	critical errors only
+	level 1 	informational messages only
+	level 2 	configuration information and warnings
+	level 5 	notifications when server threads are created and communication
+				endpoints are shutdown
+	level 10 	execution and exception traces
+	level 25 	trace each send or receive of a giop message
+	level 30 	dump up to 128 bytes of each giop message
+	level 40 	dump complete contents of each giop message
+- -ORBtraceExceptions 1(true) ou 0(false) : affiche ou non des infos détaillées
+sur les erreurs rencontrées. Activé si ORBtraceLevel vaut plus de 10.
+
+- -ORBclientCallTimeOutPeriod ms : timeout (en millisecondes) acceptable pour
+un client.
+Si 0 (défaut), pas de timeout.
+
+- serverCallTimeOutPeriod ms : timeout (en millisecondes) acceptable pour un
+serveur (temps mis entre le début et la fin d'une requête).
+Si 0 (défaut), pas de timeout.
+
+- -ORBendPoint giop:tcp:<host>:<port> : adresse TCP/IP (et protocoles) du
+serveur que l'on déclare pour que les clients s'y connectent. Utile lorsque
+la machine hébergeant le serveur a plusieurs adresses TCP/IP, certaines étant
+inutilisables par les clients. On peut activer plusieurs end points.
+Rem : si on ne spécifie pas de "end point", l'ORB est supposé écouter sur
+toutes des interfaces (adresses TCP/IP), et l'OS choisi un numéro de port.
+
+- -ORBofferBiDirectionalGIOP 1(true) ou 0(false) : si true, des callbacks sont
+possibles de serveur vers client. Intérêt limité.
