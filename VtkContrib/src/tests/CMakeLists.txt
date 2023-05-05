@@ -1,9 +1,7 @@
 include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
 
-find_package (GUIToolkitsVariables)
-
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
 add_executable (point_widget point_widget.cpp)
 add_executable (trihedrons trihedrons.cpp)

@@ -6,11 +6,8 @@ project (TkUtil LANGUAGES CXX)
 
 include (GNUInstallDirs)
 
-find_package (GUIToolkitsVariables)
-
 include (cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-
+include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
 
 set (TkUtil_VERSION ${TK_UTIL_VERSION})
 

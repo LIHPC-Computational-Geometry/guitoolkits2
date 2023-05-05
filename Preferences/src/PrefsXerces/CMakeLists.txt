@@ -1,13 +1,11 @@
 set (CURRENT_PACKAGE_NAME "PrefsXerces")
 set (CURRENT_PACKAGE_MACRO_NAME "PREFERENCES")
 
-find_package (GUIToolkitsVariables)
-
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
 #include (FindXercesC)	# Non car on ne peut pas choisir la version
-include (${GUIToolkitsVariables_CMAKE_DIR}/XercesC.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/XercesC.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
 find_package (TkUtil REQUIRED)
 

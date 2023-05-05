@@ -1,8 +1,7 @@
-find_package (GUIToolkitsVariables)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
 
 add_executable (oceane_server oceane_server.cpp)
 add_executable (runner_client runner_client.cpp)

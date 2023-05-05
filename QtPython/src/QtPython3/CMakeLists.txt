@@ -1,12 +1,10 @@
 set (CURRENT_PACKAGE_NAME "QtPython3")
 set (CURRENT_PACKAGE_MACRO_NAME "QT_PYTHON_3")
 
-find_package (GUIToolkitsVariables)
-
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/python_binding.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/python_binding.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
 # Le répertoire des scripts python :
 set (QT_PYTHON_SCRIPTS_DIR "${CMAKE_INSTALL_PREFIX}/${PYTHON_BINDING_DIR}")

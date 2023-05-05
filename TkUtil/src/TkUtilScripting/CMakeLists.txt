@@ -1,12 +1,10 @@
 set (CURRENT_PACKAGE_NAME "TkUtilScripting")
 set (CURRENT_PACKAGE_MACRO_NAME "TK_UTIL_SCRIPTING")
 
-find_package (GUIToolkitsVariables)
-
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/python_binding.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/python_binding.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
 file (GLOB CPP_SOURCES *.i *.cpp)

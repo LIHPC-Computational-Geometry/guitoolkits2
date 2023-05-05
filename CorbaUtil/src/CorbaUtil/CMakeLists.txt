@@ -1,12 +1,10 @@
 set (CURRENT_PACKAGE_NAME "CorbaUtil")
 set (CURRENT_PACKAGE_MACRO_NAME "CORBA_UTIL")
 
-find_package (GUIToolkitsVariables)
-
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/omniORB4.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/omniORB4.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
 find_package (TkUtil 6 REQUIRED)
 #pkg_check_modules (omniORB4 REQUIRED omniORB4)

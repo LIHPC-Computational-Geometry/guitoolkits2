@@ -1,11 +1,9 @@
 set (CURRENT_PACKAGE_NAME "PluginCore")
 set (CURRENT_PACKAGE_MACRO_NAME "PLUGIN")
 
-find_package (GUIToolkitsVariables)
-
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
 find_package (TkUtil 6 REQUIRED)
 

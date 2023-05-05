@@ -5,7 +5,7 @@
 # => include version.cmake avant celui-ci.
 #
 
-include (${GUIToolkitsVariables_CMAKE_DIR}/organization.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/organization.cmake)
 
 # Compilation :
 set (CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${EXTRA_CXX_FLAGS}")

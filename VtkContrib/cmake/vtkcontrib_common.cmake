@@ -1,6 +1,4 @@
-find_package (GUIToolkitsVariables)
-
-include (${GUIToolkitsVariables_CMAKE_DIR}/common_vtk.cmake)	# Positionne VTK_7, VTK_8, VTK_9
+include (${CMAKE_SOURCE_DIR}/cmake/common_vtk.cmake)	# Positionne VTK_7, VTK_8, VTK_9
 
 # Compilation :
 add_definitions (-DVTK_CONTRIB_VERSION="${VTK_CONTRIB_VERSION}")

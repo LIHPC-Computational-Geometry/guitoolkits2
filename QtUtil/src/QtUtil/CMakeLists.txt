@@ -1,13 +1,10 @@
 set (CURRENT_PACKAGE_NAME "QtUtil")
 set (CURRENT_PACKAGE_MACRO_NAME "QT_UTIL")
 
-find_package (GUIToolkitsVariables)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
-
-find_package (TkUtil 6 REQUIRED)
 find_package (Qt5Widgets 5 REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package (Qt5PrintSupport 5 REQUIRED NO_CMAKE_SYSTEM_PATH)
 #

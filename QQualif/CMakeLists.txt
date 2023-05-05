@@ -4,10 +4,8 @@ project (QQualif CXX C)
 
 include (GNUInstallDirs)
 
-find_package (GUIToolkitsVariables)
-
 include (cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
+include (${CMAKE_SOURCE_DIR}/common.cmake)
 
 set (QQualif_VERSION ${QQUALIF_VERSION})
 

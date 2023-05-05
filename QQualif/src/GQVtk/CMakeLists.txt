@@ -1,12 +1,9 @@
 set (CURRENT_PACKAGE_NAME "GQVtk")
 set (CURRENT_PACKAGE_MACRO_NAME "GQVTK")
 
-find_package (GUIToolkitsVariables)
-
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common_vtk.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
 #find_package (VtkContrib REQUIRED)	# Uniquement pour la dépendance à VTK, à remplacer par la suite
 if (VTK_7)
