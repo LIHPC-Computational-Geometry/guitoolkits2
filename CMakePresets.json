@@ -5,13 +5,27 @@
         "name": "ci",
         "cacheVariables":
         {
-          "USE_PYTHON_3": "ON",
           "TK_UTIL": "ON",
           "PYTHON_UTIL": "ON",
           "QT_UTIL": "ON",
           "QT_PYTHON": "ON",
           "PREFERENCES": "ON",
-          "PLUGIN": "ON"
+          "PLUGIN": "ON",
+          "QWT_CHARTS": "ON",
+          "QQUALIF": "ON",
+          "QT_NETWORK": "ON",
+          "VTKCONTRIB": "ON",
+          "QT_VTK": "ON",
+          "ANNOTATIONS": "ON",
+          "CORBA_UTIL": "ON",
+          "USE_PYTHON_3": "ON",
+          "VTK_7": "ON",
+          "QVTK_WIDGET": "ON",
+          "USE_OPENGL_BACKEND": "ON",
+          "VTK_ROOT": "$env{INSTALL_DIR}/VTK-7.1.1",
+          "Lima_ROOT": "$env{INSTALL_DIR}/lima",
+          "qualifinternal_ROOT": "$env{INSTALL_DIR}/qualif",
+          "omniORB4_INCLUDE_DIRS": "/usr/include/omniORB4"
         }
       }
     ]

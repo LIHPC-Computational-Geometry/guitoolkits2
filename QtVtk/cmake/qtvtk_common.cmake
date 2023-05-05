@@ -1,5 +1,5 @@
-include (${GUIToolkitsVariables_CMAKE_DIR}/organization.cmake)
-
+include (${CMAKE_SOURCE_DIR}/cmake/organization.cmake)
+include (${CMAKE_SOURCE_DIR}/cmake/common_vtk.cmake)	# Positionne VTK_7, VTK_8, VTK_9
 
 # Compilation :
 add_definitions (-DQT_VTK_VERSION="${QT_VTK_VERSION}")

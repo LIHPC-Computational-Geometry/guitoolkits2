@@ -83,7 +83,7 @@ target_compile_definitions (QtUtil PUBLIC ${QT_UTIL_PUBLIC_FLAGS})
 target_compile_definitions (QtUtil PRIVATE ${QT_UTIL_PRIVATE_FLAGS})
 target_compile_options (QtUtil PRIVATE ${SHARED_CFLAGS})	# Requested by Qt ...
 target_include_directories (QtUtil PUBLIC ${QT_INC_DEPENDENCIES})
-target_link_libraries (QtUtil PUBLIC TkUtil::TkUtil ${QT_LIB_DEPENDENCIES})
+target_link_libraries (QtUtil PUBLIC TkUtil ${QT_LIB_DEPENDENCIES})
 # Etre capable une fois installée de retrouver TkUtil, Qt5*, ... :
 # (Rem : en son absence on a Set runtime path of "/tmp/pignerol/install/lib/libQtUtil.so.5.0.0" to "") ...
 set_target_properties (QtUtil PROPERTIES INSTALL_RPATH_USE_LINK_PATH 1)

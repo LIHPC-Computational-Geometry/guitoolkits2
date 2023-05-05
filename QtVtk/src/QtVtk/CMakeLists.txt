@@ -5,9 +5,7 @@ include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
-find_package (VtkContrib 5 REQUIRED)
-include (${CMAKE_SOURCE_DIR}/cmake/qtvtk_common.cmake)	# Après VtkContrib qui positionne les variables VTK_7, VTK_8 et VTK_9
-find_package (QtUtil 6 REQUIRED)
+include (../../cmake/qtvtk_common.cmake)	            # Après VtkContrib qui positionne les variables VTK_7, VTK_8 et VTK_9
 find_package(Qt5Core NO_CMAKE_SYSTEM_PATH)				# In order to enable moc ...
 if (VTK_9)
 	find_package (VTK COMPONENTS GUISupportQt IOExportGL2PS FiltersExtraction)
@@ -48,7 +46,7 @@ endif(VTK_9)
 target_compile_definitions (QtVtk PUBLIC ${QT_VTK_PUBLIC_FLAGS})
 target_compile_definitions (QtVtk PRIVATE ${QT_VTK_PRIVATE_FLAGS} ${QT_VTK_PRIVATE_HELP_FLAGS})
 target_compile_options (QtVtk PRIVATE ${SHARED_CFLAGS})	# Requested by Qt ...
-target_link_libraries (QtVtk PUBLIC QtUtil::QtUtil VtkContrib::VtkContrib)
+target_link_libraries (QtVtk PUBLIC QtUtil VtkContrib)
 
 # Etre capable une fois installée de retrouver vtk*, ... :
 # (Rem : en son absence on a Set runtime path of "/tmp/pignerol/install/lib/libQtVtk.so.5.0.0" to "") ...

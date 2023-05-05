@@ -29,7 +29,7 @@ foreach (lib ${ALL_TARGETS})
    target_compile_definitions (${lib} PRIVATE WITHOUT_THREAD_LOCALE)
 endforeach (lib)
 target_include_directories (PythonUtil PRIVATE ${Python_INCLUDE_DIRS})
-target_link_libraries (PythonUtil PUBLIC TkUtil::TkUtil ${Python_LIBRARIES})
+target_link_libraries (PythonUtil PUBLIC TkUtil ${Python_LIBRARIES})
 target_include_directories (PythonUtil PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/public>$<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>)
 
 # INSTALLATION :

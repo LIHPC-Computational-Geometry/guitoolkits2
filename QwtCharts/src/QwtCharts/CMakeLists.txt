@@ -6,7 +6,6 @@ include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/cmake/FindQwt.cmake)	# définit ${QWT_TARGET}
 include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
-find_package (QtUtil 6 REQUIRED)
 find_package(Qt5Core 5 NO_CMAKE_SYSTEM_PATH)	# In order to enable moc ...
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
@@ -28,7 +27,7 @@ target_compile_definitions (QwtCharts PUBLIC ${QWT_CHARTS_PUBLIC_FLAGS})
 target_compile_definitions (QwtCharts PRIVATE ${QWT_CHARTS_PRIVATE_FLAGS})
 target_compile_options (QwtCharts PRIVATE ${SHARED_CFLAGS})	# Requested by Qt ...
 target_include_directories (QwtCharts PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/public)
-target_link_libraries (QwtCharts PUBLIC QtUtil::QtUtil ${QWT_TARGET})
+target_link_libraries (QwtCharts PUBLIC QtUtil ${QWT_TARGET})
 # Etre capable une fois installée de retrouver TkUtil, Qt5*, ... :
 # (Rem : en son absence on a Set runtime path of "/tmp/pignerol/install/lib/libQwtCharts.so.5.0.0" to "") ...
 set_target_properties (QwtCharts PROPERTIES INSTALL_RPATH_USE_LINK_PATH 1)

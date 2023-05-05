@@ -28,7 +28,7 @@ swig_add_library (TkUtilScripting TYPE SHARED LANGUAGE PYTHON SOURCES ${CPP_SOUR
 cmake_policy (SET CMP0086 NEW)
 set_source_files_properties (TkUtilScripting.i PROPERTIES CPLUSPLUS ON)
 set_source_files_properties (TkUtilScripting.i PROPERTIES SWIG_MODULE_NAME TkUtil)
-add_custom_command (TARGET TkUtilScripting POST_BUILD COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/TkUtil.py ${CMAKE_CURRENT_BINARY_DIR}/binding.py COMMAND cat ${GUIToolkitsVariables_CMAKE_DIR}/utf8-header.py ${CMAKE_CURRENT_BINARY_DIR}/binding.py >> ${CMAKE_CURRENT_BINARY_DIR}/TkUtilScripting.py)
+add_custom_command (TARGET TkUtilScripting POST_BUILD COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/TkUtil.py ${CMAKE_CURRENT_BINARY_DIR}/binding.py COMMAND cat ${CMAKE_SOURCE_DIR}/cmake/utf8-header.py ${CMAKE_CURRENT_BINARY_DIR}/binding.py >> ${CMAKE_CURRENT_BINARY_DIR}/TkUtilScripting.py)
 # Objectif avoir les flags de compilation SWIG suivants :
 # -globals TkUtil -shadow -DIN_STD="std::" -DSWIG_FORBIDS_FINALIZATION -DIN_UTIL="TkUtil::" -DIN_STD="std::"
 # Ne marche pas sans le -c++ malgré les CPLUSPLUS ON avant le swig_add_library.
@@ -39,13 +39,13 @@ if (SWIG_VERSION VERSION_GREATER 4)
 endif (SWIG_VERSION VERSION_GREATER 4)
 # Avec cmake_policy (SET CMP0086 NEW) -module ${SWIG_MODULE_NAME} devrait être automatiquement passé, SWIG_MODULE_NAME étant défini comme propriété du fichier swig. Mais ...
 swig_link_libraries (TkUtilScripting PUBLIC TkUtil ${Python_LIBRARIES})
-target_include_directories (TkUtilScripting PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/public>$<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>)
+target_include_directories (TkUtilScripting PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../TkUtil/public>$<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>)
 foreach (lib ${ALL_TARGETS})
    target_include_directories (TkUtilScripting PRIVATE ${Python_INCLUDE_DIRS})
    target_compile_options (${lib} PUBLIC ${MANDATORY_CXX_OPTIONS})
    set_property (TARGET ${lib} PROPERTY VERSION ${TK_UTIL_VERSION})
    set_property (TARGET ${lib} PROPERTY SOVERSION ${TK_UTIL_MAJOR_VERSION})
-   set_property (TARGET ${lib} PROPERTY SWIG_INCLUDE_DIRECTORIES ${CMAKE_SOURCE_DIR}/src/TkUtil/public)
+   set_property (TARGET ${lib} PROPERTY SWIG_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/../TkUtil/public)
    set_property (TARGET ${lib} PROPERTY SWIG_COMPILE_OPTIONS ${MT_SWIG_COMPILE_OPTIONS})
 # INSTALL_RPATH modifie le rpath pour les libs internes au projet :
 # Etre capable une fois installée de retrouver les libs utilisées (iconv ?), ... :

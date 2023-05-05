@@ -5,8 +5,6 @@ include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
-find_package (TkUtil 6 REQUIRED)
-
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
 file (GLOB CPP_SOURCES *.cpp)
 
@@ -24,7 +22,7 @@ target_compile_definitions (PluginCore PUBLIC ${PLUGIN_PUBLIC_FLAGS})
 target_compile_definitions (PluginCore PRIVATE ${PLUGIN_PRIVATE_FLAGS})
 target_compile_options (PluginCore PRIVATE ${SHARED_CFLAGS})	# Requested by Qt ...
 target_include_directories (PluginCore PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/public)
-target_link_libraries (PluginCore PUBLIC TkUtil::TkUtil)
+target_link_libraries (PluginCore PUBLIC TkUtil)
 # Etre capable une fois installée de retrouver TkUtil, ... :
 # (Rem : en son absence on a Set runtime path of "/tmp/pignerol/install/lib/libPluginCore.so.5.0.0" to "") ...
 set_target_properties (PluginCore PROPERTIES INSTALL_RPATH_USE_LINK_PATH 1)

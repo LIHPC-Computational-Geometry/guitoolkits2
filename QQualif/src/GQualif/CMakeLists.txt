@@ -5,7 +5,6 @@ include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
-find_package (TkUtil 6 REQUIRED)
 if (BUILD_GQLima)
 	find_package (Lima REQUIRED)
 endif (BUILD_GQLima)
@@ -26,7 +25,7 @@ target_include_directories (GQualif PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOU
 target_compile_definitions (GQualif PUBLIC ${GQUALIF_PUBLIC_FLAGS})
 target_compile_definitions (GQualif PRIVATE ${GQUALIF_PRIVATE_FLAGS})
 target_compile_options (GQualif PRIVATE ${SHARED_CFLAGS})	# Requested by Qt ...
-target_link_libraries (GQualif PUBLIC TkUtil::TkUtil qualifinternal::qualifinternal)
+target_link_libraries (GQualif PUBLIC TkUtil qualifinternal::qualifinternal)
 # Etre capable une fois installée de retrouver TkUtil, Qualif*, ... :
 # (Rem : en son absence on a Set runtime path of "/tmp/pignerol/install/lib/libGQualif.so.5.0.0" to "") ...
 set_target_properties (GQualif PROPERTIES INSTALL_RPATH_USE_LINK_PATH 1)

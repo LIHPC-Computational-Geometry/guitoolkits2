@@ -7,8 +7,6 @@ include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/cmake/XercesC.cmake)
 include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
-find_package (TkUtil REQUIRED)
-
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
 file (GLOB CPP_SOURCES *.cpp)
 

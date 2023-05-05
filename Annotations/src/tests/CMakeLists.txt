@@ -2,6 +2,8 @@ include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
+find_package(Qt5 COMPONENTS Core)
+
 add_executable (annote main.cpp)
 
 target_include_directories (annote PRIVATE ../Annotations/public)

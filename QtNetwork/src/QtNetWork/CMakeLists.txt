@@ -5,8 +5,8 @@ include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
 
+find_package(Qt5 COMPONENTS Widgets)
 find_package(Qt5Core NO_CMAKE_SYSTEM_PATH)	# In order to enable moc ...
-find_package (QtUtil 6 REQUIRED)
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
 file (GLOB CPP_SOURCES *.cpp *.qrc ${HEADERS})
@@ -34,7 +34,7 @@ target_compile_definitions (QtNetWork PUBLIC ${QT_NETWORK_PUBLIC_FLAGS})
 target_compile_definitions (QtNetWork PRIVATE ${QT_NETWORK_PRIVATE_FLAGS})
 target_compile_options (QtNetWork PRIVATE ${SHARED_CFLAGS})	# Requested by Qt ...
 target_include_directories (QtNetWork PUBLIC ${QT_INC_DEPENDENCIES})
-target_link_libraries (QtNetWork PUBLIC QtUtil::QtUtil ${QT_LIB_DEPENDENCIES})
+target_link_libraries (QtNetWork PUBLIC QtUtil ${QT_LIB_DEPENDENCIES})
 # Etre capable une fois installée de retrouver QtUtil, TkUtil, Qt5*, ... :
 # (Rem : en son absence on a Set runtime path of "/tmp/pignerol/install/lib/libQtNetWork.so.5.0.0" to "") ...
 set_target_properties (QtNetWork PROPERTIES INSTALL_RPATH_USE_LINK_PATH 1)
