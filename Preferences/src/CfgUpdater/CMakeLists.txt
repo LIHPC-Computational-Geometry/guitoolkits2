@@ -1,8 +1,8 @@
 set (CURRENT_PACKAGE_NAME "CfgUpdater")
 
 include (../../cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 add_executable (CfgUpdate CfgUpdate.cpp)
 

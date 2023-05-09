@@ -5,7 +5,7 @@ project (QtUtil CXX)
 include (GNUInstallDirs)
 
 include (cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 
 set (QtUtil_VERSION ${QT_UTIL_VERSION})
 

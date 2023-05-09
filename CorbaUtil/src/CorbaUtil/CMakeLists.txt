@@ -2,9 +2,9 @@ set (CURRENT_PACKAGE_NAME "CorbaUtil")
 set (CURRENT_PACKAGE_MACRO_NAME "CORBA_UTIL")
 
 include (../../cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/omniORB4.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/omniORB4.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 #pkg_check_modules (omniORB4 REQUIRED omniORB4)
 #pkg_check_modules (omnithread3 REQUIRED omnithread3)

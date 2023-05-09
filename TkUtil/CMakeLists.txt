@@ -7,7 +7,7 @@ project (TkUtil LANGUAGES CXX)
 include (GNUInstallDirs)
 
 include (cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 
 set (TkUtil_VERSION ${TK_UTIL_VERSION})
 

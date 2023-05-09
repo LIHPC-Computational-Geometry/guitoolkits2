@@ -5,7 +5,7 @@ project (QtPython CXX)
 include (GNUInstallDirs)
 
 include (cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 
 set (QtPYTHON_VERSION ${QT_PYTHON_VERSION})
 

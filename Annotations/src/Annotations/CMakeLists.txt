@@ -2,8 +2,8 @@ set (CURRENT_PACKAGE_NAME "Annotations")
 set (CURRENT_PACKAGE_MACRO_NAME "ANNOTATIONS")
 
 include (../../cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 find_package (Qt5PrintSupport REQUIRED NO_CMAKE_SYSTEM_PATH)
 

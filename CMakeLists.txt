@@ -27,7 +27,7 @@ endfunction (syntax)
 # On créé la liste ordonnée des composantes à compiler/installer :
 # VtkContrib doit passer avant QQualif car il effectue la détection de la version de VTK, nécessaire à QQualif si -DBUILD_GQVtk:BOOL=ON est positionné.
 # C'est pas top clean (: ...
-list (APPEND COMPONENTS )
+list (APPEND COMPONENTS GUIToolkitsVariables)
 if (VTKCONTRIB)
 	list (APPEND COMPONENTS VtkContrib)
 endif (VTKCONTRIB)
@@ -91,6 +91,7 @@ endif ( )
 list (REMOVE_DUPLICATES COMPONENTS)
 message (STATUS "====> Composantes à installer : ${COMPONENTS}.")
 
+set (GUIToolkitsVariables_CMAKE_DIR "${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake")
 foreach (component IN LISTS COMPONENTS)
 	message (STATUS "\n====> ${component}")
 	add_subdirectory(${component})

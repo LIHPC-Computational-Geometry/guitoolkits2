@@ -2,9 +2,9 @@ set (CURRENT_PACKAGE_NAME "TkUtilScripting")
 set (CURRENT_PACKAGE_MACRO_NAME "TK_UTIL_SCRIPTING")
 
 include (../../cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/python_binding.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/python_binding.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
 file (GLOB CPP_SOURCES *.i *.cpp)
@@ -28,7 +28,7 @@ swig_add_library (TkUtilScripting TYPE SHARED LANGUAGE PYTHON SOURCES ${CPP_SOUR
 cmake_policy (SET CMP0086 NEW)
 set_source_files_properties (TkUtilScripting.i PROPERTIES CPLUSPLUS ON)
 set_source_files_properties (TkUtilScripting.i PROPERTIES SWIG_MODULE_NAME TkUtil)
-add_custom_command (TARGET TkUtilScripting POST_BUILD COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/TkUtil.py ${CMAKE_CURRENT_BINARY_DIR}/binding.py COMMAND cat ${CMAKE_SOURCE_DIR}/cmake/utf8-header.py ${CMAKE_CURRENT_BINARY_DIR}/binding.py >> ${CMAKE_CURRENT_BINARY_DIR}/TkUtilScripting.py)
+add_custom_command (TARGET TkUtilScripting POST_BUILD COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/TkUtil.py ${CMAKE_CURRENT_BINARY_DIR}/binding.py COMMAND cat ${GUIToolkitsVariables_CMAKE_DIR}/utf8-header.py ${CMAKE_CURRENT_BINARY_DIR}/binding.py >> ${CMAKE_CURRENT_BINARY_DIR}/TkUtilScripting.py)
 # Objectif avoir les flags de compilation SWIG suivants :
 # -globals TkUtil -shadow -DIN_STD="std::" -DSWIG_FORBIDS_FINALIZATION -DIN_UTIL="TkUtil::" -DIN_STD="std::"
 # Ne marche pas sans le -c++ malgré les CPLUSPLUS ON avant le swig_add_library.

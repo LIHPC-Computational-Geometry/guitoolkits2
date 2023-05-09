@@ -2,8 +2,8 @@ set (CURRENT_PACKAGE_NAME "GQualif")
 set (CURRENT_PACKAGE_MACRO_NAME "GQUALIF")
 
 include (../../cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 if (BUILD_GQLima)
 	find_package (Lima REQUIRED)

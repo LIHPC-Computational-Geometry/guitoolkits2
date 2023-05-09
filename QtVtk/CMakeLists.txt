@@ -6,7 +6,7 @@ project (QtVtk CXX C)
 include (GNUInstallDirs)
 
 include (cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 
 set (QtVtk_VERSION ${QT_VTK_VERSION})
 

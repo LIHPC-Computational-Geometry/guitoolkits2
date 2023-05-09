@@ -2,8 +2,8 @@ set (CURRENT_PACKAGE_NAME "QtNetWork")
 set (CURRENT_PACKAGE_MACRO_NAME "QT_NETWORK")
 
 include (../../cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 find_package(Qt5 COMPONENTS Widgets)
 find_package(Qt5Core NO_CMAKE_SYSTEM_PATH)	# In order to enable moc ...

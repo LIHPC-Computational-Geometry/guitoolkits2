@@ -6,7 +6,7 @@ project (QtNetwork CXX)
 include (GNUInstallDirs)
 
 include (cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 
 set (QtNetwork_VERSION ${QT_NETWORK_VERSION})
 

@@ -2,8 +2,8 @@ set (CURRENT_PACKAGE_NAME "QtPlugin")
 set (CURRENT_PACKAGE_MACRO_NAME "QT_PLUGIN")
 
 include (../../cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
 file (GLOB CPP_SOURCES *.cpp)

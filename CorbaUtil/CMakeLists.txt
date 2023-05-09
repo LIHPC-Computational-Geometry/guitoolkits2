@@ -5,7 +5,7 @@ project (CorbaUtil CXX)
 include (GNUInstallDirs)
 
 include (cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 
 set (CorbaUtil_VERSION ${CORBA_UTIL_VERSION})
 

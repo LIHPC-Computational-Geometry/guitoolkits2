@@ -2,8 +2,8 @@ set (CURRENT_PACKAGE_NAME "PrefsCore")
 set (CURRENT_PACKAGE_MACRO_NAME "PREFERENCES")
 
 include (../../cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/workarounds.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
 file (GLOB CPP_SOURCES *.cpp)

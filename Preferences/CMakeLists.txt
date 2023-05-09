@@ -5,7 +5,7 @@ project (Preferences CXX)
 include (GNUInstallDirs)
 
 include (cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 
 set (Preferences_VERSION ${PREFERENCES_VERSION})
 
