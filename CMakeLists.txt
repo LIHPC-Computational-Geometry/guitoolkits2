@@ -25,9 +25,13 @@ function (syntax)
 endfunction (syntax)
 
 # On créé la liste ordonnée des composantes à compiler/installer :
-# Dans la version actuelle VtkContrib doit passer en premier car il effectue la détection de la version de VTK, nécessaire à QQualif si -DBUILD_GQVtk:BOOL=ON est positionné.
+# VtkContrib doit passer avant QQualif car il effectue la détection de la version de VTK, nécessaire à QQualif si -DBUILD_GQVtk:BOOL=ON est positionné.
 # C'est pas top clean (: ...
 list (APPEND COMPONENTS )
+if (VTKCONTRIB)
+	list (APPEND COMPONENTS VtkContrib)
+endif (VTKCONTRIB)
+
 if (TK_UTIL)
 	list (APPEND COMPONENTS TkUtil)
 endif (TK_UTIL)
@@ -39,6 +43,14 @@ endif (PYTHON_UTIL)
 if (QT_UTIL)
 	list (APPEND COMPONENTS TkUtil QtUtil)
 endif (QT_UTIL)
+
+if (QT_VTK)
+	list (APPEND COMPONENTS VtkContrib TkUtil QtUtil QtVtk)
+endif (QT_VTK)
+
+if (ANNOTATIONS)
+	list (APPEND COMPONENTS VtkContrib TkUtil QtUtil QtVtk Annotations)
+endif (ANNOTATIONS)
 
 if (QT_PYTHON)
 	list (APPEND COMPONENTS TkUtil PythonUtil QtUtil QtPython)
@@ -63,18 +75,6 @@ endif (QQUALIF)
 if (QT_NETWORK)
 	list (APPEND COMPONENTS TkUtil QtUtil QtNetwork)
 endif (QT_NETWORK)
-
-if (VTKCONTRIB)
-	list (PREPEND COMPONENTS VtkContrib)
-endif (VTKCONTRIB)
-
-if (QT_VTK)
-	list (PREPEND COMPONENTS VtkContrib TkUtil QtUtil QtVtk)
-endif (QT_VTK)
-
-if (ANNOTATIONS)
-	list (PREPEND COMPONENTS VtkContrib TkUtil QtUtil QtVtk Annotations)
-endif (ANNOTATIONS)
 
 if (CORBA_UTIL)
 	list (APPEND COMPONENTS TkUtil CorbaUtil)
