@@ -25,6 +25,9 @@ function (syntax)
 endfunction (syntax)
 
 # On créé la liste ordonnée des composantes à compiler/installer :
+# Dans la version actuelle VtkContrib doit passer en premier car il effectue la détection de la version de VTK, nécessaire à QQualif si -DBUILD_GQVtk:BOOL=ON est positionné.
+# C'est pas top clean (: ...
+list (APPEND COMPONENTS )
 if (TK_UTIL)
 	list (APPEND COMPONENTS TkUtil)
 endif (TK_UTIL)
@@ -62,15 +65,15 @@ if (QT_NETWORK)
 endif (QT_NETWORK)
 
 if (VTKCONTRIB)
-	list (APPEND COMPONENTS VtkContrib)
+	list (PREPEND COMPONENTS VtkContrib)
 endif (VTKCONTRIB)
 
 if (QT_VTK)
-	list (APPEND COMPONENTS TkUtil QtUtil VtkContrib QtVtk)
+	list (PREPEND COMPONENTS VtkContrib TkUtil QtUtil QtVtk)
 endif (QT_VTK)
 
 if (ANNOTATIONS)
-	list (APPEND COMPONENTS TkUtil QtUtil VtkContrib QtVtk Annotations)
+	list (PREPEND COMPONENTS VtkContrib TkUtil QtUtil QtVtk Annotations)
 endif (ANNOTATIONS)
 
 if (CORBA_UTIL)
@@ -78,10 +81,12 @@ if (CORBA_UTIL)
 endif (CORBA_UTIL)
 
 # A t'on sélectionné au moins une composante ?
-if ((NOT TK_UTIL) AND (NOT VTKCONTRIB))
+list (FIND COMPONENTS TkUtil TK_UTIL)
+list (FIND COMPONENTS VtkContrib VTKCONTRIB)
+if ((TK_UTIL STREQUAL "-1") AND (VTKCONTRIB STREQUAL "-1"))
 	syntax ( )
 	message (FATAL_ERROR "Echec de la compilation/installation de composantes du projet GUIToolkits : absence de composante sélectionnée.")
-endif ((NOT TK_UTIL) AND (NOT VTKCONTRIB))
+endif ( )
 
 list (REMOVE_DUPLICATES COMPONENTS)
 message (STATUS "====> Composantes à installer : ${COMPONENTS}.")
