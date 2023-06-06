@@ -1,5 +1,6 @@
 include(CMakeFindDependencyMacro)
 find_dependency (Iconv)
+find_dependency (GUIToolkitsVariables)
 
 @PACKAGE_INIT@
 
