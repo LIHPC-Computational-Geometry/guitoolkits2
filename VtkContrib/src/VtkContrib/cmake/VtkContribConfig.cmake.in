@@ -1,6 +1,7 @@
 include(CMakeFindDependencyMacro)
 find_dependency (VTK)
 find_dependency (OpenGL)	# Pour Spack 0.18.1
+find_dependency (GUIToolkitsVariables)
 
 @PACKAGE_INIT@
 
