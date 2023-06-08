@@ -26,7 +26,8 @@
           "VTK_ROOT": "$env{INSTALL_DIR}/VTK-7.1.1",
           "Lima_ROOT": "$env{INSTALL_DIR}/lima",
           "qualifinternal_ROOT": "$env{INSTALL_DIR}/qualif",
-          "omniORB4_INCLUDE_DIRS": "/usr/include/omniORB4"
+          "omniORB4_INCLUDE_DIRS": "/usr/include/omniORB4",
+          "qwt_ROOT": "/containerws/src/qwt-6.1.5"
         }
       }
     ]
