@@ -5,6 +5,7 @@
         "name": "ci",
         "cacheVariables":
         {
+          "BUILD_TESTS": "OFF",
           "TK_UTIL": "ON",
           "PYTHON_UTIL": "ON",
           "QT_UTIL": "ON",
@@ -17,7 +18,7 @@
           "VTKCONTRIB": "ON",
           "QT_VTK": "ON",
           "ANNOTATIONS": "ON",
-          "CORBA_UTIL": "ON",
+          "CORBA_UTIL": "OFF",
           "USE_PYTHON_3": "ON",
           "VTK_7": "ON",
           "QVTK_WIDGET": "ON",

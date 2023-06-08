@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.20)
-project(qtvtk_test_link)
+project(vtkcontrib_test_link)
 
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE QtVtk::QtVtk)
+target_link_libraries(${PROJECT_NAME} PRIVATE VtkContrib::VtkContrib)
 
 enable_testing()
 add_test(
