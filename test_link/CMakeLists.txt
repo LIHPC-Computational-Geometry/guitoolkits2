@@ -2,7 +2,7 @@ enable_testing ( )
 
 cmake_minimum_required (VERSION 3.20)
 
-project (GUIToolkits2 LANGUAGES CXX)
+project (GUIToolkits2_test_link LANGUAGES CXX)
 
 function (syntax)
 	message (NOTICE "Fichier CMakeLists.txt de compilation/installation de composantes du projet GUIToolkits2.")
@@ -29,7 +29,6 @@ endfunction (syntax)
 # On créé la liste ordonnée des composantes à compiler/installer :
 # VtkContrib doit passer avant QQualif car il effectue la détection de la version de VTK, nécessaire à QQualif si -DBUILD_GQVtk:BOOL=ON est positionné.
 # C'est pas top clean (: ...
-list (APPEND COMPONENTS GUIToolkitsVariables)
 if (VTKCONTRIB)
 	list (APPEND COMPONENTS VtkContrib)
 endif (VTKCONTRIB)
@@ -50,9 +49,9 @@ if (QT_VTK)
 	list (APPEND COMPONENTS VtkContrib TkUtil QtUtil QtVtk)
 endif (QT_VTK)
 
-if (ANNOTATIONS)
-	list (APPEND COMPONENTS VtkContrib TkUtil QtUtil QtVtk Annotations)
-endif (ANNOTATIONS)
+# if (ANNOTATIONS)
+# 	list (APPEND COMPONENTS VtkContrib TkUtil QtUtil QtVtk Annotations)
+# endif (ANNOTATIONS)
 
 if (QT_PYTHON)
 	list (APPEND COMPONENTS TkUtil PythonUtil QtUtil QtPython)
@@ -62,9 +61,9 @@ if (PREFERENCES)
 	list (APPEND COMPONENTS TkUtil QtUtil Preferences)
 endif (PREFERENCES)
 
-if (PLUGIN)
-	list (APPEND COMPONENTS TkUtil QtUtil Preferences Plugin)
-endif (PLUGIN)
+# if (PLUGIN)
+# 	list (APPEND COMPONENTS TkUtil QtUtil Preferences Plugin)
+# endif (PLUGIN)
 
 if (QWT_CHARTS)
 	list (APPEND COMPONENTS TkUtil QtUtil QwtCharts)
@@ -74,9 +73,9 @@ if (QQUALIF)
 	list (APPEND COMPONENTS TkUtil QtUtil QwtCharts QQualif)
 endif (QQUALIF)
 
-if (QT_NETWORK)
-	list (APPEND COMPONENTS TkUtil QtUtil QtNetwork)
-endif (QT_NETWORK)
+# if (QT_NETWORK)
+# 	list (APPEND COMPONENTS TkUtil QtUtil QtNetwork)
+# endif (QT_NETWORK)
 
 if (CORBA_UTIL)
 	list (APPEND COMPONENTS TkUtil CorbaUtil)
@@ -94,9 +93,8 @@ list (REMOVE_DUPLICATES COMPONENTS)
 message (STATUS "====> Composantes à installer : ${COMPONENTS}.")
 
 set (GUIToolkitsVariables_CMAKE_DIR "${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake")
-
 foreach (component IN LISTS COMPONENTS)
 	message (STATUS "\n====> ${component}")
-	add_subdirectory(${component})
+	add_subdirectory(${CMAKE_SOURCE_DIR}/../${component}/test_link ${CMAKE_BINARY_DIR}/${component})
 endforeach (component IN LISTS COMPONENTS)
 

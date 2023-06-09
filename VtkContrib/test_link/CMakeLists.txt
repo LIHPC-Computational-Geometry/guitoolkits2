@@ -3,6 +3,8 @@ project(vtkcontrib_test_link)
 
 set(CMAKE_CXX_STANDARD 14)
 
+find_package (VtkContrib REQUIRED)
+
 add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE VtkContrib::VtkContrib)

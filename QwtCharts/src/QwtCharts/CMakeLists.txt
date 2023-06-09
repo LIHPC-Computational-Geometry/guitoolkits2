@@ -3,8 +3,12 @@ set (CURRENT_PACKAGE_MACRO_NAME "QWT_CHARTS")
 
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
-include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/FindQwt.cmake)	# définit ${QWT_TARGET}
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
+
+set(SAVED_MODULE_PATH "${CMAKE_MODULE_PATH}")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake")
+find_package(Qwt REQUIRED)
+set(CMAKE_MODULE_PATH "${SAVED_MODULE_PATH}")
 
 find_package(Qt5Core 5 NO_CMAKE_SYSTEM_PATH)	# In order to enable moc ...
 
