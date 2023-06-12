@@ -1,0 +1,61 @@
+name: Reusable Spack workflow 
+
+on:
+  workflow_call:
+    inputs:
+      test-link-options:
+        required: false
+        type: string
+
+env:
+  QT_QPA_PLATFORM: offscreen
+
+jobs:
+  main:
+    name: Spack build & run
+    # The CMake configure and build commands are platform agnostic and should work equally
+    # well on Linux, Windows or Mac.
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/lihpc-computational-geometry/spack-cgcore-mgx:latest
+    strategy:
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2 # seems to be needed by codecov
+          submodules: recursive
+
+      - name: Initialize the dev environment
+        shell: bash
+        run : |
+          source /spack/share/spack/setup-env.sh
+          git clone --depth=1 https://github.com/LIHPC-Computational-Geometry/spack_recipes_meshing.git
+          spack repo add ./spack_recipes_meshing/meshing_repo
+          spack repo add ./spack_recipes_meshing/supersede_repo
+
+      - name: Build and install with Spack
+        shell: bash
+        run: |
+          source /spack/share/spack/setup-env.sh 
+          spack env create ci-env
+          spack env activate ci-env
+          # ${{ github.event.repository.name }} represents the name of the project
+          spack add ${{ github.event.repository.name }}
+          # we use GITHUB_WORKSPACE instead of github.Workspace because in containers it
+          # seems to be incorrect (see https://github.com/actions/runner/issues/2058)
+          spack develop -p $GITHUB_WORKSPACE --no-clone ${{ github.event.repository.name }}@999
+          spack concretize --reuse
+          spack install
+
+      - name: Test C++ lib install
+        shell: bash
+        run: |
+          source /spack/share/spack/setup-env.sh
+          spack env activate ci-env
+          spack load ${{ github.event.repository.name }}
+          cd test_link/
+          cmake -S . -B build ${{ inputs.test-link-options }}
+          cmake --build build
+          cmake --build build --target test
