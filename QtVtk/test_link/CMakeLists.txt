@@ -9,10 +9,6 @@ add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE QtVtk::QtVtk)
 
-# Pour forcer le link des exécutables de test qui ne font rien :
-# tests exécutés en CI qui ont une fenêtre graphique
-target_link_options(${PROJECT_NAME} PRIVATE "-Wl,--no-as-needed")
-
 enable_testing()
 add_test(
         NAME ${PROJECT_NAME}
