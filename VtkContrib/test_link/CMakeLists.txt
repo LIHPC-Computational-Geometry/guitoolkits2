@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.20)
+project(vtkcontrib_test_link)
+
+set(CMAKE_CXX_STANDARD 14)
+
+find_package (VtkContrib REQUIRED)
+
+add_executable(${PROJECT_NAME} main.cpp)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE VtkContrib::VtkContrib)
+
+# Pour forcer le link des exécutables de test qui ne font rien :
+# tests exécutés en CI qui ont une fenêtre graphique
+target_link_options(${PROJECT_NAME} PRIVATE "-Wl,--no-as-needed")
+
+enable_testing()
+add_test(
+        NAME ${PROJECT_NAME}
+        COMMAND $<TARGET_FILE:${PROJECT_NAME}>
+)

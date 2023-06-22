@@ -1,0 +1,5 @@
+if (NOT Annotations_FOUND)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/Annotations Annotations)
+    add_library(Annotations::Annotations ALIAS Annotations)
+endif()
+set(Annotations_FOUND YES)

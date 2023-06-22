@@ -2,9 +2,9 @@ enable_testing ( )
 
 find_package (GUIToolkitsVariables)
 
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 set (ALL_EXECUTABLES hello script_gen python_runner)
 

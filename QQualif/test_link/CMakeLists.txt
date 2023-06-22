@@ -1,16 +1,20 @@
 cmake_minimum_required(VERSION 3.20)
-project(test_link)
+project(qqualif_test_link)
 
 set(CMAKE_CXX_STANDARD 14)
 
 find_package (QtQualif REQUIRED)
 
-add_executable(test_link main.cpp)
+add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE QtQualif::QtQualif)
 
+# Pour forcer le link des exécutables de test qui ne font rien :
+# tests exécutés en CI qui ont une fenêtre graphique
+target_link_options(${PROJECT_NAME} PRIVATE "-Wl,--no-as-needed")
+
 enable_testing()
 add_test(
-        NAME link_on_lib
-        COMMAND $<TARGET_FILE:test_link>
+        NAME ${PROJECT_NAME}
+        COMMAND $<TARGET_FILE:${PROJECT_NAME}>
 )

@@ -1,0 +1,5 @@
+if (NOT QtUtil_FOUND)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/QtUtil QtUtil)
+    add_library(QtUtil::QtUtil ALIAS QtUtil)
+endif()
+set(QtUtil_FOUND YES)

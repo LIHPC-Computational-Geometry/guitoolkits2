@@ -3,10 +3,10 @@ set (CURRENT_PACKAGE_MACRO_NAME "QT_PYTHON_3")
 
 find_package (GUIToolkitsVariables)
 
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/python_binding.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/python_binding.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 # Le répertoire des scripts python :
 set (QT_PYTHON_SCRIPTS_DIR "${CMAKE_INSTALL_PREFIX}/${PYTHON_BINDING_DIR}")
@@ -70,7 +70,7 @@ install(FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${CURRENT_PACKA
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/QtPython3Distribution.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/${CURRENT_PACKAGE_NAME})
 
 # Recopie des fichiers python indispensable au bon fonctionnement de la console :
-file (GLOB QT_PYTHON_SCRIPTS "${CMAKE_SOURCE_DIR}/src/${CMAKE_ETC_DIR_NAME}/python3/*.py")
+file (GLOB QT_PYTHON_SCRIPTS "${CMAKE_SOURCE_DIR}/QtPython/src/${CMAKE_ETC_DIR_NAME}/python3/*.py")
 # Recopie dans le build tree :
 foreach (qt_python_script ${QT_PYTHON_SCRIPTS})
 	get_filename_component (SCRIPT_NAME ${qt_python_script} NAME)

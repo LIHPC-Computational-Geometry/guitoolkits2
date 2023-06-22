@@ -1,14 +1,11 @@
 set (CURRENT_PACKAGE_NAME "CorbaUtil")
 set (CURRENT_PACKAGE_MACRO_NAME "CORBA_UTIL")
 
-find_package (GUIToolkitsVariables)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/omniORB4.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/omniORB4.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
-
-find_package (TkUtil 6 REQUIRED)
 #pkg_check_modules (omniORB4 REQUIRED omniORB4)
 #pkg_check_modules (omnithread3 REQUIRED omnithread3)
 
@@ -46,7 +43,7 @@ target_include_directories (CorbaUtil PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 target_compile_options (CorbaUtil PRIVATE ${SHARED_CFLAGS})	# Requested by omniORB
 target_include_directories (CorbaUtil PUBLIC ${TkUtil_INCLUDE_DIR} ${CORBA_INC_DEPENDENCIES})
 target_include_directories (CorbaUtil PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/public)
-target_link_libraries (CorbaUtil PUBLIC TkUtil::TkUtil ${CORBA_LIB_DEPENDENCIES})
+target_link_libraries (CorbaUtil PUBLIC TkUtil ${CORBA_LIB_DEPENDENCIES})
 target_link_libraries (CorbaUtil PUBLIC stdc++)
 
 # INSTALLATION :

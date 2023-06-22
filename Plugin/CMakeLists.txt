@@ -4,10 +4,8 @@ project (Plugin CXX)
 
 include (GNUInstallDirs)
 
-find_package (GUIToolkitsVariables)
-
 include (cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 
 set (Plugin_VERSION ${PLUGIN_VERSION})
 

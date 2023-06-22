@@ -4,10 +4,8 @@ project (QtUtil CXX)
 
 include (GNUInstallDirs)
 
-find_package (GUIToolkitsVariables)
-
 include (cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 
 set (QtUtil_VERSION ${QT_UTIL_VERSION})
 

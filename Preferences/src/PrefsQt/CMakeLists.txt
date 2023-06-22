@@ -3,9 +3,9 @@ set (CURRENT_PACKAGE_MACRO_NAME "PREFERENCES")
 
 find_package (GUIToolkitsVariables)
 
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 find_package (QtUtil 6 REQUIRED)
 find_package(Qt5Core 5 NO_CMAKE_SYSTEM_PATH)	# In order to enable moc ...

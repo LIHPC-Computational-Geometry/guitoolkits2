@@ -1,0 +1,5 @@
+if (NOT VtkContrib_FOUND)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/VtkContrib VtkContrib)
+    add_library(VtkContrib::VtkContrib ALIAS VtkContrib)
+endif()
+set(VtkContrib_FOUND YES)

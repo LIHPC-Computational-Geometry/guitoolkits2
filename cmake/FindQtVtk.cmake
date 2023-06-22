@@ -1,0 +1,5 @@
+if (NOT QtVtk_FOUND)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/QtVtk QtVtk)
+    add_library(QtVtk::QtVtk ALIAS QtVtk)
+endif()
+set(QtVtk_FOUND YES)

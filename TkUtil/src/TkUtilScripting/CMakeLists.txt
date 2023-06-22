@@ -3,10 +3,12 @@ set (CURRENT_PACKAGE_MACRO_NAME "TK_UTIL_SCRIPTING")
 
 find_package (GUIToolkitsVariables)
 
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/python_binding.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+message(STATUS ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> COOUCOUCOUCOUCOU    33333333333333")
+
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/python_binding.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
 file (GLOB CPP_SOURCES *.i *.cpp)
@@ -41,13 +43,13 @@ if (SWIG_VERSION VERSION_GREATER 4)
 endif (SWIG_VERSION VERSION_GREATER 4)
 # Avec cmake_policy (SET CMP0086 NEW) -module ${SWIG_MODULE_NAME} devrait être automatiquement passé, SWIG_MODULE_NAME étant défini comme propriété du fichier swig. Mais ...
 swig_link_libraries (TkUtilScripting PUBLIC TkUtil ${Python_LIBRARIES})
-target_include_directories (TkUtilScripting PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/public>$<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>)
+target_include_directories (TkUtilScripting PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../TkUtil/public>$<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>)
 foreach (lib ${ALL_TARGETS})
    target_include_directories (TkUtilScripting PRIVATE ${Python_INCLUDE_DIRS})
    target_compile_options (${lib} PUBLIC ${MANDATORY_CXX_OPTIONS})
    set_property (TARGET ${lib} PROPERTY VERSION ${TK_UTIL_VERSION})
    set_property (TARGET ${lib} PROPERTY SOVERSION ${TK_UTIL_MAJOR_VERSION})
-   set_property (TARGET ${lib} PROPERTY SWIG_INCLUDE_DIRECTORIES ${CMAKE_SOURCE_DIR}/src/TkUtil/public)
+   set_property (TARGET ${lib} PROPERTY SWIG_INCLUDE_DIRECTORIES ${CMAKE_CURRENT_SOURCE_DIR}/../TkUtil/public)
    set_property (TARGET ${lib} PROPERTY SWIG_COMPILE_OPTIONS ${MT_SWIG_COMPILE_OPTIONS})
 # INSTALL_RPATH modifie le rpath pour les libs internes au projet :
 # Etre capable une fois installée de retrouver les libs utilisées (iconv ?), ... :

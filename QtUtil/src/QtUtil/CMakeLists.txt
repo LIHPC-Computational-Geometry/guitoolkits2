@@ -3,13 +3,14 @@ set (CURRENT_PACKAGE_MACRO_NAME "QT_UTIL")
 
 find_package (GUIToolkitsVariables)
 
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
-find_package (TkUtil 6 REQUIRED)
+find_package (TkUtil 5 REQUIRED)
 find_package (Qt5Widgets 5 REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package (Qt5PrintSupport 5 REQUIRED NO_CMAKE_SYSTEM_PATH)
+
 #
 # Aide hypertexte avec navigateur web. Le navigateur utilisant sur le QtWebEngine qui repose sur Chromium est nettement mieux
 # que le QtTextBrowser, mais son installation est très délicate et incertaine ...

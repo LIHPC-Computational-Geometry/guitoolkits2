@@ -4,13 +4,12 @@ cmake_minimum_required (VERSION 3.14)
 
 project (TkUtil LANGUAGES CXX)
 
-include (GNUInstallDirs)
-
 find_package (GUIToolkitsVariables)
 
-include (cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
+include (GNUInstallDirs)
 
+include (cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 
 set (TkUtil_VERSION ${TK_UTIL_VERSION})
 

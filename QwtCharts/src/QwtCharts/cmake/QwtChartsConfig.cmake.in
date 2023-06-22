@@ -3,8 +3,10 @@ find_dependency (GUIToolkitsVariables)
 find_dependency (QtUtil)
 
 @PACKAGE_INIT@
-include (${GUIToolkitsVariables_CMAKE_DIR}/FindQwt.cmake)
-
+set(SAVED_MODULE_PATH "${CMAKE_MODULE_PATH}")
+list(APPEND CMAKE_MODULE_PATH "${GUIToolkitsVariables_CMAKE_DIR}")
+find_package(Qwt REQUIRED)
+set(CMAKE_MODULE_PATH "${SAVED_MODULE_PATH}")
 
 set (QwtCharts_VERSION @QWT_CHARTS_VERSION@)
 set_and_check (QwtCharts_INCLUDE_DIR   "@PACKAGE_INCLUDE_INSTALL_DIR@")

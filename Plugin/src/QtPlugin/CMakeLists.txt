@@ -3,10 +3,11 @@ set (CURRENT_PACKAGE_MACRO_NAME "QT_PLUGIN")
 
 find_package (GUIToolkitsVariables)
 
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
+find_package(Qt5 COMPONENTS Core)
 find_package (PrefsQt 6 REQUIRED)
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)

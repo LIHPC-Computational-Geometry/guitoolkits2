@@ -7,15 +7,15 @@ set (CURRENT_PACKAGE_MACRO_NAME "GUI_TOOLKITS_VARIABLES")
 
 include (GNUInstallDirs)
 
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/organization.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/organization.cmake)
 
 include(CMakePackageConfigHelpers)
 
 
 # Installation des fichiers cmake partagés par les composantes installées de GUIToolkits :
 set (ConfigPackageLocation ${CMAKE_CMAKE_DIR})
-file (GLOB CMAKE_GUI_TOOLKITS_SHARED_FILES "${CMAKE_SOURCE_DIR}/cmake/*.cmake" "${CMAKE_SOURCE_DIR}/cmake/*.py")
+file (GLOB CMAKE_GUI_TOOLKITS_SHARED_FILES "${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/*.cmake" "${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/*.py")
 install (FILES ${CMAKE_GUI_TOOLKITS_SHARED_FILES} DESTINATION ${ConfigPackageLocation} PERMISSIONS OWNER_READ OWNER_WRITE GROUP_READ GROUP_WRITE WORLD_READ)
 
 # Utilisation par d'autres composantes :

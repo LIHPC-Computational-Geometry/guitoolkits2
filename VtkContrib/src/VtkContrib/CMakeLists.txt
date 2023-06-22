@@ -4,10 +4,10 @@ set (CURRENT_PACKAGE_MACRO_NAME "VTK_CONTRIB")
 find_package (GUIToolkitsVariables)
 find_package (OpenGL)	# Pour Spack 0.18.1
 
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${CMAKE_SOURCE_DIR}/cmake/vtkcontrib_common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (../../cmake/vtkcontrib_common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 # Curieusement les dépendances semblent inexister avec cette version de VTK, ou ne sont pas bien prises en compte ...
 # => On ajoute MPI

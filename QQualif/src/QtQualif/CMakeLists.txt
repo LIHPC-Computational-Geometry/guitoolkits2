@@ -3,9 +3,9 @@ set (CURRENT_PACKAGE_MACRO_NAME "QT_QUALIF")
 
 find_package (GUIToolkitsVariables)
 
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 find_package(Qt5Core NO_CMAKE_SYSTEM_PATH)	# In order to enable moc ...
 find_package (QwtCharts 5 REQUIRED)

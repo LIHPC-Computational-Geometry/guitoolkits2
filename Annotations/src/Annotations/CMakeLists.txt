@@ -3,9 +3,9 @@ set (CURRENT_PACKAGE_MACRO_NAME "ANNOTATIONS")
 
 find_package (GUIToolkitsVariables)
 
-include (${CMAKE_SOURCE_DIR}/cmake/version.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/common.cmake)
-include (${GUIToolkitsVariables_CMAKE_DIR}/workarounds.cmake)
+include (../../cmake/version.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
+include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 find_package (QtVtk 8 REQUIRED)
 find_package (Qt5PrintSupport REQUIRED NO_CMAKE_SYSTEM_PATH)
@@ -28,7 +28,7 @@ target_include_directories (Annotations PUBLIC ${Qt5Widgets_INCLUDE_DIRS} ${Qt5P
 target_compile_definitions (Annotations PUBLIC ${ANNOTATIONS_PUBLIC_FLAGS})
 target_compile_definitions (Annotations PRIVATE ${ANNOTATIONS_PRIVATE_FLAGS})
 target_compile_options (Annotations PRIVATE ${SHARED_CFLAGS})	# Requested by Qt ...
-target_link_libraries (Annotations PUBLIC Qt5::PrintSupport QtVtk::QtVtk)	# En fait seules les libs VTK sont nécessaires ...
+target_link_libraries (Annotations PUBLIC Qt5::PrintSupport QtVtk)	# En fait seules les libs VTK sont nécessaires ...
 
 # Etre capable une fois installée de retrouver vtk*, ... :
 # (Rem : en son absence on a Set runtime path of "/tmp/pignerol/install/lib/libAnnotations.so.5.0.0" to "") ...
