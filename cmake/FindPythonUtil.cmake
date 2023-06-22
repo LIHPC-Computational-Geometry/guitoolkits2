@@ -1,0 +1,5 @@
+if (NOT PythonUtil_FOUND)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/PythonUtil PythonUtil)
+    add_library(PythonUtil::PythonUtil ALIAS PythonUtil)
+endif()
+set(PythonUtil_FOUND YES)

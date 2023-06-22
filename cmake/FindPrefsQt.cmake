@@ -1,0 +1,5 @@
+if (NOT PrefsQt_FOUND)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/Preferences Preferences)
+    add_library(PrefsQt::PrefsQt ALIAS PrefsQt)
+endif()
+set(PrefsQt_FOUND YES)

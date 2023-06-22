@@ -1,0 +1,6 @@
+if (NOT TkUtil_FOUND)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/TkUtil TkUtil)
+    add_library(TkUtil::TkUtil ALIAS TkUtil)
+    add_library(TkUtilScripting::TkUtilScripting ALIAS TkUtilScripting)
+endif()
+set(TkUtil_FOUND YES)

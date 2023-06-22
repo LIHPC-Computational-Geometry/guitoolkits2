@@ -1,0 +1,5 @@
+if (NOT QwtCharts_FOUND)
+    add_subdirectory(${CMAKE_SOURCE_DIR}/QwtCharts QwtCharts)
+    add_library(QwtCharts::QwtCharts ALIAS QwtCharts)
+endif()
+set(QwtCharts_FOUND YES)
