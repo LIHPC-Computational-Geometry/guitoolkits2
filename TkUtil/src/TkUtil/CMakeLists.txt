@@ -1,6 +1,8 @@
 set (CURRENT_PACKAGE_NAME "TkUtil")
 set (CURRENT_PACKAGE_MACRO_NAME "TK_UTIL")
 
+find_package (GUIToolkitsVariables)
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)

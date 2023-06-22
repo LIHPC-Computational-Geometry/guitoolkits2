@@ -1,5 +1,7 @@
 set (CURRENT_PACKAGE_NAME "tests")
 
+find_package (GUIToolkitsVariables)
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)

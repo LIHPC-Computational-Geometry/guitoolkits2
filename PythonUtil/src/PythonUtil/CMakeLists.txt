@@ -1,10 +1,14 @@
 set (CURRENT_PACKAGE_NAME "PythonUtil")
 set (CURRENT_PACKAGE_MACRO_NAME "PYTHON_UTIL")
 
+find_package (GUIToolkitsVariables)
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/python_binding.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
+
+find_package (TkUtil 6 REQUIRED)
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
 file (GLOB CPP_SOURCES *.cpp)
@@ -29,7 +33,7 @@ foreach (lib ${ALL_TARGETS})
    target_compile_definitions (${lib} PRIVATE WITHOUT_THREAD_LOCALE)
 endforeach (lib)
 target_include_directories (PythonUtil PRIVATE ${Python_INCLUDE_DIRS})
-target_link_libraries (PythonUtil PUBLIC TkUtil ${Python_LIBRARIES})
+target_link_libraries (PythonUtil PUBLIC TkUtil::TkUtil ${Python_LIBRARIES})
 target_include_directories (PythonUtil PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/public>$<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>)
 
 # INSTALLATION :

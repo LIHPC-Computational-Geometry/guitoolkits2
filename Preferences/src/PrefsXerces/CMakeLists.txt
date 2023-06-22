@@ -1,11 +1,15 @@
 set (CURRENT_PACKAGE_NAME "PrefsXerces")
 set (CURRENT_PACKAGE_MACRO_NAME "PREFERENCES")
 
+find_package (GUIToolkitsVariables)
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 #include (FindXercesC)	# Non car on ne peut pas choisir la version
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/XercesC.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
+
+find_package (TkUtil REQUIRED)
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
 file (GLOB CPP_SOURCES *.cpp)

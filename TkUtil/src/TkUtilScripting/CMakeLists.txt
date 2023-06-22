@@ -1,6 +1,10 @@
 set (CURRENT_PACKAGE_NAME "TkUtilScripting")
 set (CURRENT_PACKAGE_MACRO_NAME "TK_UTIL_SCRIPTING")
 
+find_package (GUIToolkitsVariables)
+
+message(STATUS ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> COOUCOUCOUCOUCOU    33333333333333")
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/python_binding.cmake)

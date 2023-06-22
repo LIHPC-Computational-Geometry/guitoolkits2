@@ -3,6 +3,8 @@ include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/python_binding.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
+find_package (TkUtilScripting 6 REQUIRED)
+
 file (GLOB CPP_SOURCES *.i *.cpp)
 
 set (ALL_TARGETS PythonScriptingTest)

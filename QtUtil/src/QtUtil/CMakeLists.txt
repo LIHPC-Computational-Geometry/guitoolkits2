@@ -1,12 +1,16 @@
 set (CURRENT_PACKAGE_NAME "QtUtil")
 set (CURRENT_PACKAGE_MACRO_NAME "QT_UTIL")
 
+find_package (GUIToolkitsVariables)
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
+find_package (TkUtil 5 REQUIRED)
 find_package (Qt5Widgets 5 REQUIRED NO_CMAKE_SYSTEM_PATH)
 find_package (Qt5PrintSupport 5 REQUIRED NO_CMAKE_SYSTEM_PATH)
+
 #
 # Aide hypertexte avec navigateur web. Le navigateur utilisant sur le QtWebEngine qui repose sur Chromium est nettement mieux
 # que le QtTextBrowser, mais son installation est très délicate et incertaine ...
@@ -83,7 +87,7 @@ target_compile_definitions (QtUtil PUBLIC ${QT_UTIL_PUBLIC_FLAGS})
 target_compile_definitions (QtUtil PRIVATE ${QT_UTIL_PRIVATE_FLAGS})
 target_compile_options (QtUtil PRIVATE ${SHARED_CFLAGS})	# Requested by Qt ...
 target_include_directories (QtUtil PUBLIC ${QT_INC_DEPENDENCIES})
-target_link_libraries (QtUtil PUBLIC TkUtil ${QT_LIB_DEPENDENCIES})
+target_link_libraries (QtUtil PUBLIC TkUtil::TkUtil ${QT_LIB_DEPENDENCIES})
 # Etre capable une fois installée de retrouver TkUtil, Qt5*, ... :
 # (Rem : en son absence on a Set runtime path of "/tmp/pignerol/install/lib/libQtUtil.so.5.0.0" to "") ...
 set_target_properties (QtUtil PROPERTIES INSTALL_RPATH_USE_LINK_PATH 1)

@@ -1,11 +1,14 @@
 set (CURRENT_PACKAGE_NAME "QtQualif")
 set (CURRENT_PACKAGE_MACRO_NAME "QT_QUALIF")
 
+find_package (GUIToolkitsVariables)
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 find_package(Qt5Core NO_CMAKE_SYSTEM_PATH)	# In order to enable moc ...
+find_package (QwtCharts 5 REQUIRED)
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
 file (GLOB CPP_SOURCES *.cpp)
@@ -27,7 +30,7 @@ target_include_directories (QtQualif PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SO
 target_compile_definitions (QtQualif PUBLIC ${QT_QUALIF_PUBLIC_FLAGS})
 target_compile_definitions (QtQualif PRIVATE ${QT_QUALIF_PRIVATE_FLAGS})
 target_compile_options (QtQualif PRIVATE ${SHARED_CFLAGS})	# Requested by Qt ...
-target_link_libraries (QtQualif PUBLIC QwtCharts GQualif)
+target_link_libraries (QtQualif PUBLIC QwtCharts::QwtCharts GQualif)
 
 # Etre capable une fois installée de retrouver vtk*, ... :
 # (Rem : en son absence on a Set runtime path of "/tmp/pignerol/install/lib/libQtQualif.so.5.0.0" to "") ...

@@ -1,11 +1,14 @@
 enable_testing ( )
 
+find_package (GUIToolkitsVariables)
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
 set (ALL_EXECUTABLES hello script_gen python_runner)
 
+find_package (TkUtilScripting)
 foreach (exe ${ALL_EXECUTABLES})
    add_executable (${exe} ${exe}.cpp)
    target_compile_definitions (${exe} PRIVATE SHARED_PYTHON_TEST_PATH_SO="${CMAKE_CURRENT_BINARY_DIR}/../PythonScriptingTest")

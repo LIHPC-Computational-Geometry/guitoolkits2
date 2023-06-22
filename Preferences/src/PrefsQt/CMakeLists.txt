@@ -1,10 +1,13 @@
 set (CURRENT_PACKAGE_NAME "PrefsQt")
 set (CURRENT_PACKAGE_MACRO_NAME "PREFERENCES")
 
+find_package (GUIToolkitsVariables)
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
+find_package (QtUtil 6 REQUIRED)
 find_package(Qt5Core 5 NO_CMAKE_SYSTEM_PATH)	# In order to enable moc ...
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
@@ -23,7 +26,7 @@ target_include_directories (PrefsQt PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOU
 target_include_directories (PrefsQt PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../PrefsXerces/public>$<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>)
 target_include_directories (PrefsQt PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../PrefsCore/public>$<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>)
 target_compile_definitions (PrefsQt PRIVATE ${PREFS_QT_PRIVATE_FLAGS})
-target_link_libraries (PrefsQt PUBLIC QtUtil PrefsXerces)
+target_link_libraries (PrefsQt PUBLIC QtUtil::QtUtil PrefsXerces)
 # Etre capable une fois installée de retrouver TkUtil, XercesC, Qt*, ... :
 # (Rem : en son absence on a Set runtime path of "/tmp/pignerol/install/lib/libPrefsQt.so.5.0.0" to "") ...
 set_target_properties (PrefsQt PROPERTIES INSTALL_RPATH_USE_LINK_PATH 1 INSTALL_RPATH ${CMAKE_INSTALL_PREFIX}/${CMAKE_INSTALL_LIBDIR})

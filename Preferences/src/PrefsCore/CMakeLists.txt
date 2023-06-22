@@ -1,9 +1,13 @@
 set (CURRENT_PACKAGE_NAME "PrefsCore")
 set (CURRENT_PACKAGE_MACRO_NAME "PREFERENCES")
 
+find_package (GUIToolkitsVariables)
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
+
+find_package (TkUtil 6 REQUIRED)
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
 file (GLOB CPP_SOURCES *.cpp)
@@ -19,7 +23,7 @@ set (PREFERENCES_PRIVATE_FLAGS -DPREFS_BASE_VERSION="${PREFERENCES_VERSION}")
 target_include_directories (PrefsCore PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/public>$<INSTALL_INTERFACE:${CMAKE_INSTALL_PREFIX}/include>)
 target_compile_definitions (PrefsCore PRIVATE ${PREFERENCES_PRIVATE_FLAGS})
 #target_compile_options (PrefsCore PRIVATE ${SHARED_CFLAGS})	# Requested by Qt ...
-target_link_libraries (PrefsCore PUBLIC TkUtil)
+target_link_libraries (PrefsCore PUBLIC TkUtil::TkUtil)
 # Etre capable une fois installée de retrouver TkUtil, ... :
 # (Rem : en son absence on a Set runtime path of "/tmp/pignerol/install/lib/libPrefsCore.so.5.0.0" to "") ...
 set_target_properties (PrefsCore PROPERTIES INSTALL_RPATH_USE_LINK_PATH 1)

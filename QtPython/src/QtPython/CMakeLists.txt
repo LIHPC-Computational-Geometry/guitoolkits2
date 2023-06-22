@@ -1,6 +1,8 @@
 set (CURRENT_PACKAGE_NAME "QtPython")
 set (CURRENT_PACKAGE_MACRO_NAME "QT_PYTHON")
 
+find_package (GUIToolkitsVariables)
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/python_binding.cmake)
@@ -9,6 +11,8 @@ include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 # Le répertoire des scripts python :
 set (QT_PYTHON_SCRIPTS_DIR "${CMAKE_INSTALL_PREFIX}/${PYTHON_BINDING_DIR}")
 
+find_package (QtUtil 6 REQUIRED)
+find_package (PythonUtil 6 REQUIRED)
 find_package(Qt5Core NO_CMAKE_SYSTEM_PATH)	# In order to enable moc ...
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)

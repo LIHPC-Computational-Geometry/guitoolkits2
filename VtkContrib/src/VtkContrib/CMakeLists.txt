@@ -1,6 +1,7 @@
 set (CURRENT_PACKAGE_NAME "VtkContrib")
 set (CURRENT_PACKAGE_MACRO_NAME "VTK_CONTRIB")
 
+find_package (GUIToolkitsVariables)
 find_package (OpenGL)	# Pour Spack 0.18.1
 
 include (../../cmake/version.cmake)

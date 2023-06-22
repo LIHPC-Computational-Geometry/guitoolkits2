@@ -26,76 +26,57 @@ function (syntax)
 	message (NOTICE "-DUSE_PYTHON_2:BOOL=ON ou -DUSE_PYTHON_3:BOOL=ON : choix de la version majeure de python à utiliser.")
 endfunction (syntax)
 
-# On créé la liste ordonnée des composantes à compiler/installer :
-# VtkContrib doit passer avant QQualif car il effectue la détection de la version de VTK, nécessaire à QQualif si -DBUILD_GQVtk:BOOL=ON est positionné.
-# C'est pas top clean (: ...
-list (APPEND COMPONENTS GUIToolkitsVariables)
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+set (GUIToolkitsVariables_CMAKE_DIR "${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake")
+
 if (VTKCONTRIB)
-	list (APPEND COMPONENTS VtkContrib)
+	find_package(VtkContrib)
 endif (VTKCONTRIB)
 
 if (TK_UTIL)
-	list (APPEND COMPONENTS TkUtil)
+	find_package(TkUtil)
 endif (TK_UTIL)
 
 if (PYTHON_UTIL)
-	list (APPEND COMPONENTS TkUtil PythonUtil)
+	find_package(PythonUtil)
 endif (PYTHON_UTIL)
 
 if (QT_UTIL)
-	list (APPEND COMPONENTS TkUtil QtUtil)
+	find_package(QtUtil)
 endif (QT_UTIL)
 
 if (QT_VTK)
-	list (APPEND COMPONENTS VtkContrib TkUtil QtUtil QtVtk)
+	find_package(QtVtk)
 endif (QT_VTK)
 
 if (ANNOTATIONS)
-	list (APPEND COMPONENTS VtkContrib TkUtil QtUtil QtVtk Annotations)
+	find_package(Annotations)
 endif (ANNOTATIONS)
 
 if (QT_PYTHON)
-	list (APPEND COMPONENTS TkUtil PythonUtil QtUtil QtPython)
+	find_package(QtPython)
 endif (QT_PYTHON)
 
 if (PREFERENCES)
-	list (APPEND COMPONENTS TkUtil QtUtil Preferences)
+	find_package(PrefsQt)
 endif (PREFERENCES)
 
 if (PLUGIN)
-	list (APPEND COMPONENTS TkUtil QtUtil Preferences Plugin)
+	find_package(Plugin)
 endif (PLUGIN)
 
 if (QWT_CHARTS)
-	list (APPEND COMPONENTS TkUtil QtUtil QwtCharts)
+	find_package(QwtCharts)
 endif (QWT_CHARTS)
 
 if (QQUALIF)
-	list (APPEND COMPONENTS TkUtil QtUtil QwtCharts QQualif)
+	find_package(QQualif)
 endif (QQUALIF)
 
 if (QT_NETWORK)
-	list (APPEND COMPONENTS TkUtil QtUtil QtNetwork)
+	find_package(QtNetwork)
 endif (QT_NETWORK)
 
 if (CORBA_UTIL)
-	list (APPEND COMPONENTS TkUtil CorbaUtil)
+	find_package(CorbaUtil)
 endif (CORBA_UTIL)
-
-# A t'on sélectionné au moins une composante ?
-list (FIND COMPONENTS TkUtil TK_UTIL)
-list (FIND COMPONENTS VtkContrib VTKCONTRIB)
-if ((TK_UTIL STREQUAL "-1") AND (VTKCONTRIB STREQUAL "-1"))
-	syntax ( )
-	message (FATAL_ERROR "Echec de la compilation/installation de composantes du projet GUIToolkits : absence de composante sélectionnée.")
-endif ( )
-
-list (REMOVE_DUPLICATES COMPONENTS)
-message (STATUS "====> Composantes à installer : ${COMPONENTS}.")
-
-set (GUIToolkitsVariables_CMAKE_DIR "${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake")
-
-foreach (component IN LISTS COMPONENTS)
-	message (STATUS "\n====> ${component}")
-	add_subdirectory(${component})
-endforeach (component IN LISTS COMPONENTS)

@@ -1,10 +1,13 @@
 set (CURRENT_PACKAGE_NAME "Annotations")
 set (CURRENT_PACKAGE_MACRO_NAME "ANNOTATIONS")
 
+find_package (GUIToolkitsVariables)
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
+find_package (QtVtk 8 REQUIRED)
 find_package (Qt5PrintSupport REQUIRED NO_CMAKE_SYSTEM_PATH)
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)

@@ -1,6 +1,8 @@
 set (CURRENT_PACKAGE_NAME "QtPython3")
 set (CURRENT_PACKAGE_MACRO_NAME "QT_PYTHON_3")
 
+find_package (GUIToolkitsVariables)
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/python_binding.cmake)
@@ -9,6 +11,8 @@ include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 # Le répertoire des scripts python :
 set (QT_PYTHON_SCRIPTS_DIR "${CMAKE_INSTALL_PREFIX}/${PYTHON_BINDING_DIR}")
 
+find_package (QtUtil 6 REQUIRED)
+find_package (PythonUtil 6 REQUIRED)
 find_package(Qt5Core NO_CMAKE_SYSTEM_PATH)	# In order to enable moc ...
 
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
@@ -36,7 +40,7 @@ target_compile_definitions (QtPython3 PUBLIC ${QT_PYTHON_3_PUBLIC_FLAGS})
 target_compile_definitions (QtPython3 PRIVATE ${QT_PYTHON_3_PRIVATE_FLAGS})
 target_compile_options (QtPython3 PRIVATE ${SHARED_CFLAGS})	# Requested by Qt ...
 target_include_directories (QtPython3 PUBLIC ${QT_INC_DEPENDENCIES})
-target_link_libraries (QtPython3 PUBLIC QtUtil PythonUtil)
+target_link_libraries (QtPython3 PUBLIC QtUtil::QtUtil PythonUtil::PythonUtil)
 target_include_directories (QtPython3 PUBLIC ${QT_INC_DEPENDENCIES} ${Python3_INCLUDE_DIRS})
 # Etre capable une fois installée de retrouver QtUtil, TkUtil, Qt5*, ... :
 # (Rem : en son absence on a Set runtime path of "/tmp/pignerol/install/lib/libQtPython3.so.5.0.0" to "") ...

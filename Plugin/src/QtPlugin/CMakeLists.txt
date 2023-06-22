@@ -1,14 +1,17 @@
 set (CURRENT_PACKAGE_NAME "QtPlugin")
 set (CURRENT_PACKAGE_MACRO_NAME "QT_PLUGIN")
 
+find_package (GUIToolkitsVariables)
+
 include (../../cmake/version.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/common.cmake)
 include (${CMAKE_SOURCE_DIR}/GUIToolkitsVariables/cmake/workarounds.cmake)
 
+find_package(Qt5 COMPONENTS Core)
+find_package (PrefsQt 6 REQUIRED)
+
 file (GLOB HEADERS public/${CURRENT_PACKAGE_NAME}/*.h)
 file (GLOB CPP_SOURCES *.cpp)
-
-find_package(Qt5 COMPONENTS Core)
 
 # On ajoute les en-têtes aux sources. C'est utile pour cmake dans certains cas,
 # par exemple lorsqu'ils doivent être pré-processés (moc, ...).
@@ -25,7 +28,7 @@ target_compile_definitions (QtPlugin PUBLIC ${QT_PLUGIN_PUBLIC_FLAGS})
 target_compile_definitions (QtPlugin PRIVATE ${QT_PLUGIN_PRIVATE_FLAGS})
 target_compile_options (QtPlugin PRIVATE ${SHARED_CFLAGS})	# Requested by Qt ...
 target_include_directories (QtPlugin PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/public)
-target_link_libraries (QtPlugin PUBLIC PrefsQt PluginCore)
+target_link_libraries (QtPlugin PUBLIC PrefsQt::PrefsQt PluginCore)
 # Etre capable une fois installée de retrouver TkUtil, Qt5*, ... :
 # (Rem : en son absence on a Set runtime path of "/tmp/pignerol/install/lib/libQtPlugin.so.5.0.0" to "") ...
 set_target_properties (QtPlugin PROPERTIES INSTALL_RPATH_USE_LINK_PATH 1)

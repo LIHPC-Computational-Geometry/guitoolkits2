@@ -5,7 +5,7 @@
         "name": "ci",
         "cacheVariables":
         {
-          "BUILD_TESTS": "OFF",
+          "BUILD_TESTS": "ON",
           "TK_UTIL": "ON",
           "PYTHON_UTIL": "ON",
           "QT_UTIL": "ON",
